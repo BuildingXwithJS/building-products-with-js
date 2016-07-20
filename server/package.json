@@ -1,0 +1,16 @@
+{
+  "name": "experts-server",
+  "version": "0.1.0",
+  "description": "Experts REST backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rest",
+    "javascript",
+    "experts"
+  ],
+  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
+  "license": "MIT"
+}
