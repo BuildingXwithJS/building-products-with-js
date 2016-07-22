@@ -37,5 +37,8 @@
       "es2015-node",
       "stage-0"
     ]
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
