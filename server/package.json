@@ -4,7 +4,7 @@
   "description": "Experts REST backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint src/"
   },
   "keywords": [
     "rest",
@@ -23,8 +23,14 @@
   "homepage": "https://github.com/yamalight/building-products-with-js#readme",
   "devDependencies": {
     "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
     "babel-preset-es2015-node": "^6.1.0",
-    "babel-preset-stage-0": "^6.5.0"
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.11.1",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^5.2.2"
   },
   "babel": {
     "presets": [
