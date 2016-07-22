@@ -4,7 +4,7 @@
   "description": "Experts REST backend",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src/"
+    "test": "eslint src/ && babel-node test/"
   },
   "keywords": [
     "rest",
@@ -30,7 +30,9 @@
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.11.1",
     "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "supertest": "^1.2.0",
+    "tape": "^4.6.0"
   },
   "babel": {
     "presets": [
