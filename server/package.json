@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/yamalight/building-products-with-js/issues"
   },
-  "homepage": "https://github.com/yamalight/building-products-with-js#readme"
+  "homepage": "https://github.com/yamalight/building-products-with-js#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-preset-es2015-node": "^6.1.0",
+    "babel-preset-stage-0": "^6.5.0"
+  }
 }
