@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "eslint src/ && babel-node test/"
+    "test": "eslint src/ && node test/index.js"
   },
   "keywords": [
     "rest",
