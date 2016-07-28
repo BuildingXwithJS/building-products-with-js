@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   res.send('Hello world!');
 });
 
-// catch all unhandler errors
+// catch all unhandled errors
 app.use((err, req, res, next) => { // eslint-disable-line
   logger.error('unhandled application error: ', err);
   res.status(500).send(err);
