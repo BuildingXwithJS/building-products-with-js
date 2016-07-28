@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 // catch all unhandled errors
-app.use((err, req, res, next) => { // eslint-disable-line
+app.use((err, req, res, next) => {
   logger.error('unhandled application error: ', err);
   res.status(500).send(err);
 });
