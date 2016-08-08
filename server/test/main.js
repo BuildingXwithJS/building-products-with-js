@@ -1,6 +1,5 @@
 // npm packages
 import test from 'tape';
-import {spawn} from 'child_process';
 
 // our packages
 import {db as dbConfig} from '../config';
@@ -8,13 +7,10 @@ import {thinky, r} from '../src/db';
 
 // tests
 import core from './core';
-import auth from './auth';
+import register from './register';
+import login from './login';
 
-// reqlite instance
-const reqlite = spawn('reqlite', ['--debug'], {detached: true});
-
-// wait for start
-reqlite.stderr.on('data', () => {
+export default (reqlite) => {
   thinky.dbReady().then(() => {
     // clean the database
     test(async (t) => {
@@ -24,7 +20,8 @@ reqlite.stderr.on('data', () => {
 
     // execute tests
     core(test);
-    auth(test);
+    register(test);
+    login(test);
 
     // close db connections
     test((t) => {
@@ -33,4 +30,4 @@ reqlite.stderr.on('data', () => {
       t.end();
     });
   });
-});
+};
