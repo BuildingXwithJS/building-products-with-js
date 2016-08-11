@@ -11,6 +11,7 @@ import {logger} from './util';
 import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
 import setupUserRoutes from './user';
+import setupQuestionRoutes from './question';
 
 // init app
 const app = express();
@@ -44,7 +45,10 @@ app.get('/', (req, res) => {
 
 // setup authentication routes
 setupAuthRoutes(app);
+// setup user routes
 setupUserRoutes(app);
+// setup question routes
+setupQuestionRoutes(app);
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {

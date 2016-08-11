@@ -9,5 +9,6 @@ export const Question = thinky.createModel('Question', {
       user: thinky.type.string().required(),
       answer: thinky.type.string().required(),
     })
-  ),
+  ).default([]),
+  owner: thinky.type.string().required(),
 });
