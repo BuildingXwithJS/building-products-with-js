@@ -1,8 +1,10 @@
 // npm packages
 import request from 'supertest';
+import jwt from 'jsonwebtoken';
 
 // our packages
 import app from '../src/app';
+import {auth as authConfig} from '../config';
 
 export default (test) => {
   test('Should login with existing username and password', (t) => {
@@ -16,7 +18,12 @@ export default (test) => {
 
         t.error(err, 'No error');
         t.ok(actualBody.user, 'User exists');
+        t.ok(actualBody.token, 'Token exists');
+
+        const decodedUser = jwt.verify(actualBody.token, authConfig.jwtSecret);
+        delete decodedUser.iat;
         t.equal(actualBody.user.login, 'test', 'Login matches request');
+        t.deepEqual(actualBody.user, decodedUser, 'User must match token');
         t.end();
       });
   });
