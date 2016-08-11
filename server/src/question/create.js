@@ -23,7 +23,7 @@ export default (app) => {
       return;
     }
 
-    // save new user
+    // save new question
     try {
       const question = new Question({
         text,
