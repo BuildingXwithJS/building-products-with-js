@@ -250,4 +250,50 @@ export default (test) => {
         t.end();
       });
   });
+
+  test('DELETE /api/question/:id - should not delete question with different owner', (t) => {
+    request(app)
+      .delete(`/api/question/${app.get('other-question').id}`)
+      .set('x-access-token', app.get('token'))
+      .expect(403)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const expectedBody = {error: 'Not enough rights to delete the question!'};
+        const actualBody = res.body;
+
+        // compare
+        t.error(err, 'No error');
+        t.deepEqual(actualBody, expectedBody, 'Retrieve same question');
+        t.end();
+      });
+  });
+
+  test('DELETE /api/question/:id - should delete question', (t) => {
+    request(app)
+      .delete(`/api/question/${app.get('question').id}`)
+      .set('x-access-token', app.get('token'))
+      .expect(204)
+      .end((err) => {
+        // compare
+        t.error(err, 'No error');
+
+        // try to get it and expect to fail
+        t.test('  - GET /api/question/:id - should fail to get deleted question', (st) => {
+          request(app)
+            .get(`/api/question/${app.get('question').id}`)
+            .set('x-access-token', app.get('token'))
+            .expect(400)
+            .end((e, res) => {
+              const actualBody = res.body;
+
+              st.error(e, 'No error');
+              st.ok(actualBody.error.indexOf('DocumentNotFoundError') !== -1, 'Retrieve correct error');
+              st.end();
+
+              // end delete test
+              t.end();
+            });
+        });
+      });
+  });
 };
