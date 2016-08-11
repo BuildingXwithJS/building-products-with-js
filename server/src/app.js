@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import {logger} from './util';
 import {auth as authConfig} from '../config';
 import setupAuthRoutes from './auth';
+import setupUserRoutes from './user';
 
 // init app
 const app = express();
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 
 // setup authentication routes
 setupAuthRoutes(app);
+setupUserRoutes(app);
 
 // catch all unhandled errors
 app.use((err, req, res, next) => {
