@@ -1,10 +1,12 @@
 // npm packages
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
+import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
 
 // our packages
 import {User} from '../db';
 import {hash} from '../util';
+import {auth as authConfig} from '../../config';
 
 // define serialize and deserialize functions
 passport.serializeUser((user, done) => done(null, user.id));
@@ -32,6 +34,21 @@ passport.use(new LocalStrategy({usernameField: 'login'}, async (login, password,
   }
   // compare password
   if (user.password !== hash(password)) {
+    return done(null, false);
+  }
+  // return user if successful
+  return done(null, user);
+}));
+
+// use JWTStrategy
+const jwtOpts = {
+  jwtFromRequest: ExtractJwt.fromHeader('x-access-token'),
+  secretOrKey: authConfig.jwtSecret,
+};
+passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
+  const user = await User.get(payload.id);
+  // check if exists
+  if (!user) {
     return done(null, false);
   }
   // return user if successful
