@@ -24,6 +24,7 @@ export default (test) => {
         delete decodedUser.iat;
 
         t.equal(actualBody.user.login, 'test', 'Login matches request');
+        t.notOk(actualBody.user.password, 'No password included');
         t.deepEqual(actualBody.user, decodedUser, 'User must match token');
 
         app.set('token', actualBody.token);
