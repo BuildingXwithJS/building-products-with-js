@@ -16,6 +16,17 @@ export default (test) => {
       });
   });
 
+  test('Should register second user with given username and password', (t) => {
+    request(app)
+      .post('/api/register')
+      .send({login: 'other', password: '321', passwordRepeat: '321'})
+      .expect(201)
+      .end((err) => {
+        t.error(err, 'No error');
+        t.end();
+      });
+  });
+
   test('Should fail to register with same username', (t) => {
     request(app)
       .post('/api/register')

@@ -2,6 +2,12 @@
 import {User} from '../db';
 import {hash, asyncRequest} from '../util';
 
+export const loginTaken = async (login) => {
+  // check if login already taken
+  const users = await User.filter({login}).run();
+  return users.length > 0;
+};
+
 export default (app) => {
   app.post('/api/register', asyncRequest(async (req, res) => {
     // get user input
@@ -15,8 +21,8 @@ export default (app) => {
     const hashedPassword = hash(password);
 
     // check if login already taken
-    const users = await User.filter({login}).run();
-    if (users.length > 0) {
+    const exists = await loginTaken(login);
+    if (exists) {
       res.status(403).send({error: 'User already exists!'});
       return;
     }
