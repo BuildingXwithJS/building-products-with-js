@@ -8,7 +8,7 @@
     "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
     "db:stop": "docker stop expertsdb",
     "db:rm": "docker rm expertsdb",
-    "test": "eslint src/ && NODE_ENV=testing node test/index.js | tap-spec"
+    "test": "eslint src/ && node test/index.js | tap-spec"
   },
   "keywords": [
     "rest",
