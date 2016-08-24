@@ -1,0 +1,36 @@
+image: docker:latest
+services:
+- docker:dind
+
+stages:
+- build
+- test
+- release
+
+variables:
+  SERVER_TEST_IMAGE: yamalight/bpwjs-server:$CI_BUILD_REF_NAME
+  SERVER_RELEASE_IMAGE: yamalight/bpwjs-server:latest
+
+before_script:
+  - docker login -u yamalight -p $CI_DOCKERHUB_PASSWORD
+
+build-server:
+  stage: build
+  script:
+    - docker build --pull -t $SERVER_TEST_IMAGE ./server
+    - docker push $SERVER_TEST_IMAGE
+
+test-server:
+  stage: test
+  script:
+    - docker pull $SERVER_TEST_IMAGE
+    - docker run $SERVER_TEST_IMAGE npm test
+
+release-server:
+  stage: release
+  script:
+    - docker pull $SERVER_TEST_IMAGE
+    - docker tag $SERVER_TEST_IMAGE $SERVER_RELEASE_IMAGE
+    - docker push $SERVER_RELEASE_IMAGE
+  only:
+    - master
