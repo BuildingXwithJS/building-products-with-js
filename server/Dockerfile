@@ -11,4 +11,7 @@ RUN npm install
 # Copy application files
 COPY . /app
 
-CMD ["npm", "start"]
+# Precompile javascript
+RUN ./node_modules/.bin/babel src --out-dir lib
+
+CMD ["node", "lib/index.js"]
