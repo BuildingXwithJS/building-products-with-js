@@ -1,3 +1,4 @@
 node_modules/
 server/db/
+server/lib/
 npm-debug.log
