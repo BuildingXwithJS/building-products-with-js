@@ -17,11 +17,11 @@ Experts server can be launched in two ways - using docker, or using node.
 An assembled docker image is automatically published on Docker Hub after every push.
 First, make sure rethinkdb is running in your docker, e.g. by running:
 
-    $ docker run -d --name expretsdb rethinkdb
+    $ docker run -d --name expertsdb rethinkdb
 
 After that, all you have to do to run experts server locally is execute the following docker command:
 
-    $ docker run -d --link expretsdb -e EXPERTS_DB_URL=expretsdb -p 8080:8080 yamalight/bpwjs-server
+    $ docker run -d --link expertsdb -e EXPERTS_DB_URL=expertsdb -p 8080:8080 yamalight/bpwjs-server
 
 This will start experts server in daemon mode, link it with your instance of rethinkdb and forward port 8080 to your docker host so you can access it.  
 You can also replace `-d` flag with `-it` flags to get interactive session and see the output of server in your console.
