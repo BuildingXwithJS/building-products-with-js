@@ -2,7 +2,7 @@
 
 > Server for Building products with javascript course use case
 
-[![Build Status](https://gitlab.com/yamalight/building-products-with-js/pipelines)](https://gitlab.com/yamalight/building-products-with-js/badges/master/build.svg)
+[![Build Status](https://gitlab.com/yamalight/building-products-with-js/badges/master/build.svg)](https://gitlab.com/yamalight/building-products-with-js/pipelines)
 
 This is a simple REST API server that provides CRUD capabilities for the experts polling use-case.
 The server is build using [Express.js](https://expressjs.com/) as a server and [Passport.js](http://passportjs.org/) as authentication middleware with code compiled from ES2015+ by [babel](http://babeljs.io/)
