@@ -54,6 +54,13 @@ For bug fixes, documentation changes, and small features:
 
 For larger new features: Do everything as above, but first also make contact with the project maintainers to be sure your change fits with the project direction and you won't be wasting effort going in the wrong direction.
 
+## Contributors
+
+Thanks to all the people who helped to make this project better:
+
+1. [frankhinek](https://github.com/frankhinek)
+2. [EliasJorgensen](https://github.com/EliasJorgensen)
+
 ## License
 
 [MIT](https://opensource.org/licenses/mit-license)
