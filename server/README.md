@@ -29,7 +29,7 @@ You can also replace `-d` flag with `-it` flags to get interactive session and s
 ### Using Node
 
 Running using Node requires you having Node.js v4 or later (v6 is recommended) installed.
-To run the server locally, do the following:
+To run the server locally, do the following:  
 1. Clone this repository
 2. Enter `./server` folder
 3. Install dependencies with `npm install`
