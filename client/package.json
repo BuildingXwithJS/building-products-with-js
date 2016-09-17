@@ -4,7 +4,7 @@
   "description": "Experts portal client",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "start": "node serve.js"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,13 @@
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.25.0",
+    "express": "^4.14.0",
     "json-loader": "^0.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.7.0",
+    "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
     "react": "^15.3.1",
