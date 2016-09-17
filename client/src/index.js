@@ -1,11 +1,9 @@
+// npm packages
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => (
-  <h1>Hello world!</h1>
-);
-
-const div = document.getElementById('app');
+// our packages
+import App from './app';
 
 // render on page
-ReactDOM.render(<App />, div);
+ReactDOM.render(<App />, document.getElementById('app'));
