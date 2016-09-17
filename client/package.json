@@ -1,0 +1,45 @@
+{
+  "name": "experts-client",
+  "version": "0.1.0",
+  "description": "Experts portal client",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamalight/building-products-with-js.git"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "webpack",
+    "tutorial",
+    "front-end"
+  ],
+  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yamalight/building-products-with-js/issues"
+  },
+  "homepage": "https://github.com/yamalight/building-products-with-js#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.25.0",
+    "json-loader": "^0.5.4",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  }
+}
