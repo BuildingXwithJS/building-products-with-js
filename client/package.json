@@ -39,13 +39,13 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.7.0",
+    "webpack-dev-middleware": "^1.8.2",
     "webpack-hot-middleware": "^2.12.2"
   },
   "dependencies": {
     "history": "^4.2.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-router": "^4.0.0-2"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^4.0.0-alpha.3"
   }
 }
