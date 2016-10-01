@@ -33,7 +33,7 @@ To run the server locally, do the following:
 1. Clone this repository
 2. Enter `./server` folder
 3. Install dependencies with `npm install`
-4. Make sure you have local RethinkDB running (or start one using `npm run db:start`, requires docker)
+4. Make sure you have local RethinkDB running (or start one using `npm run db:create`, requires docker)
 5. Start the server using `npm start`
 6. Navigate to [http://localhost:8080](http://localhost:8080) in your browser
 
@@ -42,6 +42,7 @@ To run the server locally, do the following:
 Development requires you having Node.js v4 or later installed.  
 To run server for development just follow instuctions from [Using Node](#using-node) section.  
 To run test suite simply execute `npm test`.
+To see all available commands, see package.json.
 
 ## Contributing
 
