@@ -9,7 +9,7 @@ import NotFound from '../notfound';
 
 export default () => (
   <BrowserRouter>
-    <div>
+    <div className="container">
       <Match exactly pattern="/" component={Home} />
       <Match exactly pattern="/other" component={Other} />
       <Miss component={NotFound} />
