@@ -1,12 +1,16 @@
+// npm packages
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 
+// our packages
 import {registerAction} from '../../store/actions';
+import {registerErrorToMessage} from '../../util';
 
 const mapStateToProps = state => ({
   redirectToLogin: state.auth.redirectToLogin,
+  error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -14,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   onRegisterClick: params => dispatch(registerAction(params)),
 });
 
-const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
+const Register = ({onRegisterClick, navToLogin, redirectToLogin, error}) => {
   let usernameInput;
   let passwordInput;
   let passwordInputRepeat;
@@ -38,6 +42,10 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
     <div className="jumbotron">
       <h2>Experts portal:</h2>
       <p>Please register. Or <Link to="/login">login</Link></p>
+
+      {error ? (
+        <div className="alert alert-danger" role="alert">{registerErrorToMessage(error)}</div>
+      ) : ''}
 
       <form>
         <div className="form-group">

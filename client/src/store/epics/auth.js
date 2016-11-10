@@ -10,6 +10,12 @@ export const login = action$ => action$
       type: ActionTypes.LOGIN_SUCCESS,
       payload: response,
     }))
+    .catch(err => Observable.of({
+      type: ActionTypes.LOGIN_ERROR,
+      payload: {
+        error: err,
+      },
+    }))
   );
 
 export const register = action$ => action$
@@ -20,5 +26,11 @@ export const register = action$ => action$
     .map(response => ({
       type: ActionTypes.REGISTER_SUCCESS,
       payload: response,
+    }))
+    .catch(err => Observable.of({
+      type: ActionTypes.REGISTER_ERROR,
+      payload: {
+        error: err,
+      },
     }))
   );
