@@ -12,11 +12,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // our packages
 import App from './app';
 import store from './store';
+import {requireAuth} from './util';
 
 // our pages
-import Home from './home';
-import Other from './other';
-import NotFound from './notfound';
+import Home from './pages/home';
+import Login from './pages/login';
+import Register from './pages/register';
+import NotFound from './pages/notfound';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -26,8 +28,9 @@ ReactDOM.render((
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Home} />
-        <Route path="other" component={Other} />
+        <IndexRoute component={Home} onEnter={requireAuth} />
+        <Route path="login" component={Login} />
+        <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
