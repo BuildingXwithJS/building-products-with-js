@@ -48,3 +48,8 @@ export const answerQuestion = payload => ({
   type: ActionTypes.ANSWER_QUESTION,
   payload,
 });
+
+export const createQuestion = payload => ({
+  type: ActionTypes.CREATE_QUESTION,
+  payload,
+});

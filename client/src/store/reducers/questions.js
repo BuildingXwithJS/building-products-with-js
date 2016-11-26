@@ -16,6 +16,7 @@ export const questions = (state = initialState, action) => {
         status: 'done',
       };
     case ActionTypes.ANSWER_QUESTION_ERROR:
+    case ActionTypes.CREATE_QUESTION_ERROR:
     case ActionTypes.GET_ALL_QUESTIONS_ERROR:
       return {
         ...state,
@@ -26,6 +27,9 @@ export const questions = (state = initialState, action) => {
     case ActionTypes.ANSWER_QUESTION_SUCCESS:
       const index = state.questions.findIndex(q => q.id === action.payload.id);
       state.questions[index] = action.payload;
+      return state;
+    case ActionTypes.CREATE_QUESTION_SUCCESS:
+      state.questions.push(action.payload);
       return state;
     default:
       return state;
