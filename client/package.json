@@ -51,6 +51,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "history": "^4.2.0",
+    "lodash": "^4.17.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
