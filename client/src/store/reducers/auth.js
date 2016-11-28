@@ -20,10 +20,8 @@ export const auth = (state = initialState, action) => {
       };
     case ActionTypes.LOGIN_ERROR:
     case ActionTypes.REGISTER_ERROR:
-      return {
-        ...state,
-        error: action.payload.error,
-      };
+      // TODO: probably necessary in the future
+      return state;
     default:
       return state;
   }
