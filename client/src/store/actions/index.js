@@ -1,5 +1,7 @@
 import * as ActionTypes from '../actionTypes';
 
+let nextNotificationId = 0;
+
 export const helloWorldAction = () => ({
   type: ActionTypes.HELLO_WORLD,
 });
@@ -13,8 +15,6 @@ export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
 });
-
-let nextNotificationId = 0;
 
 /**
  * Add a notification to the store.
@@ -38,4 +38,18 @@ export const addNotificationAction = ({text, alertType}) => ({
 export const removeNotificationAction = notificationId => ({
   type: ActionTypes.REMOVE_NOTIFICATION,
   payload: {notificationId},
+});
+
+export const getAllQuestions = () => ({
+  type: ActionTypes.GET_ALL_QUESTIONS,
+});
+
+export const answerQuestion = payload => ({
+  type: ActionTypes.ANSWER_QUESTION,
+  payload,
+});
+
+export const createQuestion = payload => ({
+  type: ActionTypes.CREATE_QUESTION,
+  payload,
 });

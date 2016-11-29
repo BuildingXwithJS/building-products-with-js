@@ -46,6 +46,22 @@ export default (test) => {
       });
   });
 
+  test('GET /api/question - should get empty latest questions', (t) => {
+    request(app)
+      .get('/api/question')
+      .set('x-access-token', app.get('token'))
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const actualBody = res.body;
+
+        t.error(err, 'No error');
+        t.equal(actualBody.length, 0, 'Retrieve 0 questions');
+
+        t.end();
+      });
+  });
+
   test('POST /api/question - create new question', (t) => {
     request(app)
       .post('/api/question')
@@ -64,6 +80,28 @@ export default (test) => {
           moment(actualBody.expirationDate).isSame(sharedInput.expirationDate),
           'Retrieve same question expirationDate'
         );
+
+        app.set('question', actualBody);
+
+        t.end();
+      });
+  });
+
+  test('POST /api/question/:id/answer - answer existing question', (t) => {
+    const answer = 'test answer';
+
+    request(app)
+      .post(`/api/question/${app.get('question').id}/answer`)
+      .set('x-access-token', app.get('token'))
+      .send({answer})
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const actualBody = res.body;
+
+        t.error(err, 'No error');
+        t.equal(actualBody.answers.length, 1, 'Retrieve one answer');
+        t.equal(actualBody.answers[0].answer, answer, 'Retrieve same answer');
 
         app.set('question', actualBody);
 
@@ -91,6 +129,36 @@ export default (test) => {
         );
 
         app.set('other-question', actualBody);
+
+        t.end();
+      });
+  });
+
+  test('GET /api/question - get latest questions', (t) => {
+    request(app)
+      .get('/api/question')
+      .set('x-access-token', app.get('token'))
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        const actualBody = res.body;
+
+        t.error(err, 'No error');
+        t.equal(actualBody.length, 2, 'Retrieve 2 questions');
+        t.equal(actualBody[0].text, sharedInputOther.text, 'Retrieve same question text');
+        t.equal(actualBody[0].owner, app.get('other-user').id, 'Question belongs to correct user');
+        t.ok(moment(actualBody[0].creationDate).isValid(), 'Creation date must be valid');
+        t.ok(
+          moment(actualBody[0].expirationDate).isSame(sharedInputOther.expirationDate),
+          'Retrieve same question expirationDate'
+        );
+        t.equal(actualBody[1].text, sharedInput.text, 'Retrieve same question text');
+        t.equal(actualBody[1].owner, app.get('user').id, 'Question belongs to correct user');
+        t.ok(moment(actualBody[1].creationDate).isValid(), 'Creation date must be valid');
+        t.ok(
+          moment(actualBody[1].expirationDate).isSame(sharedInput.expirationDate),
+          'Retrieve same question expirationDate'
+        );
 
         t.end();
       });

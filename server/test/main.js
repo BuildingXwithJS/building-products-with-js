@@ -17,6 +17,7 @@ export default (reqlite) => {
     // clean the database
     test(async (t) => {
       await r.db(dbConfig.db).table('User').delete();
+      await r.db(dbConfig.db).table('Question').delete();
       t.end();
     });
 

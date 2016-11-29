@@ -1,9 +1,18 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
 
+const storedUser = localStorage.getItem('user.data');
+// parse use from stored string
+let user;
+try {
+  user = JSON.parse(storedUser);
+} catch (e) {
+  console.error('Error parsing user data', e);
+}
+
 const initialState = {
   token: localStorage.getItem('user.token'),
-  user: JSON.parse(localStorage.getItem('user.data')),
+  user,
 };
 
 export const auth = (state = initialState, action) => {
