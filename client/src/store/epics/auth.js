@@ -10,9 +10,8 @@ import {loginErrorToMessage, registerErrorToMessage} from '../../util';
 // --(DO_LOGIN|)
 //       switchMap(credentials => ajax)
 // -------------(token|)
-//       map
+//       mergeMap
 // -------------(LOGIN_SUCCESS with token|)
-//       concat
 // -------------(ADD_NOTIFICATION with login success|)
 
 // Failed login:
@@ -26,14 +25,14 @@ export const login = action$ => action$
   .switchMap(({payload}) => Observable
     .ajax.post('http://localhost:8080/api/login', payload)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.LOGIN_SUCCESS,
-      payload: response,
-    }))
-    .concat(Observable.of(
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.LOGIN_SUCCESS,
+        payload: response,
+      },
       Actions.addNotificationAction(
-        {text: 'Login success', alertType: 'info'},
-    )))
+        {text: 'Login success', alertType: 'info'}),
+    ))
     .catch(error => Observable.of(
       {
         type: ActionTypes.LOGIN_ERROR,
@@ -51,14 +50,15 @@ export const register = action$ => action$
   .switchMap(({payload}) => Observable
     .ajax.post('http://localhost:8080/api/register', payload)
     .map(res => res.response)
-    .map(response => ({
-      type: ActionTypes.REGISTER_SUCCESS,
-      payload: response,
-    }))
-    .concat(Observable.of(
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.REGISTER_SUCCESS,
+        payload: response,
+      },
       Actions.addNotificationAction(
         {text: 'Register success', alertType: 'info'},
-    )))
+      ),
+    ))
     .catch(error => Observable.of(
       {
         type: ActionTypes.REGISTER_ERROR,
