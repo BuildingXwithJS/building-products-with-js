@@ -24,13 +24,14 @@ export const questions = (state = initialState, action) => {
         error: action.payload.error,
       };
     // answer questions logic
-    case ActionTypes.ANSWER_QUESTION_SUCCESS:
-      const index = state.questions.findIndex(q => q.id === action.payload.id);
-      state.questions[index] = action.payload;
-      return state;
-    case ActionTypes.CREATE_QUESTION_SUCCESS:
-      state.questions.push(action.payload);
-      return state;
+    case ActionTypes.ANSWER_QUESTION_SUCCESS: {
+      const newQuestions = state.questions.map(q => q.id === action.payload.id ? action.payload : q);
+      return Object.assign({}, state, {questions: newQuestions});
+    }
+    case ActionTypes.CREATE_QUESTION_SUCCESS: {
+      const newQuestions = [...state.questions, action.payload];
+      return {...state, questions: newQuestions};
+    }
     default:
       return state;
   }
