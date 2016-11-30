@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/general.css';
 
 // JQuery for Bootstrap
 global.jQuery = require('jquery/dist/jquery.min.js');
