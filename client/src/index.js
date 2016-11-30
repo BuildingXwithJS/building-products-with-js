@@ -36,7 +36,7 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
-        <Route path="create" component={Create} />
+        <Route path="create" component={Create} onEnter={requireAuth} />
         <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>
