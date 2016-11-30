@@ -1,23 +1,19 @@
 // npm packages
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {connect} from 'react-redux';
 
 import NavbarLink from './navbarLink';
-
-const mapStateToProps = state => ({
-  actualPath: state.routing.locationBeforeTransitions && state.routing.locationBeforeTransitions.pathname,
-});
+import Logout from './logout';
 
 class NavBar extends Component {
   constructor(pros) {
     super(pros);
     this.state = {
       collapse: true,
-    }
+    };
   }
   render() {
-    const {actualPath} = this.props;
+    const {actualPath, user} = this.props;
     const {collapse} = this.state;
 
     const handleClick = (e) => {
@@ -56,6 +52,10 @@ class NavBar extends Component {
                 Create new question
               </NavbarLink>
             </ul>
+            {user ? <ul className="nav navbar-nav navbar-right">
+              <li><a>Logged as {user.login}</a></li>
+              <Logout />
+            </ul> : null}
           </div>
         </div>
       </nav>
@@ -63,4 +63,4 @@ class NavBar extends Component {
   }
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
