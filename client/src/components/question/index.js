@@ -5,9 +5,8 @@ export default ({question, onAnswer}) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
     onAnswer({question, answer: answerInput.value});
-
+    answerInput.value = '';
     return false;
   };
 
