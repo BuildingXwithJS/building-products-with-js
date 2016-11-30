@@ -4,12 +4,14 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 import NavbarLink from './navbarLink';
+import Logout from './logout';
 
 const mapStateToProps = state => ({
   actualPath: state.routing.locationBeforeTransitions && state.routing.locationBeforeTransitions.pathname,
+  user: state.auth.user
 });
 
-const NavBar = ({actualPath}) => (
+const NavBar = ({actualPath, user}) => (
   <nav className="navbar navbar-default">
     <div className="container-fluid">
       <div className="navbar-header">
@@ -36,6 +38,10 @@ const NavBar = ({actualPath}) => (
             Create new question
           </NavbarLink>
         </ul>
+        {user ? <ul className="nav navbar-nav navbar-right">
+          <li><a>Logged as {user.login}</a></li>
+          <Logout />
+        </ul> : null}
       </div>
     </div>
   </nav>

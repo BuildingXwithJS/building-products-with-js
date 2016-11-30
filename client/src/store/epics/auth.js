@@ -1,4 +1,6 @@
 import {Observable} from 'rxjs/Observable';
+import {push} from 'react-router-redux'
+
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage} from '../../util';
@@ -69,3 +71,10 @@ export const register = action$ => action$
       Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}),
     )),
   );
+
+export const logout = action$ => action$
+    .ofType(ActionTypes.DO_LOGOUT)
+    .switchMap(() => Observable.of(
+      Actions.addNotificationAction({text: 'Logout success', alertType: 'info'}),
+      push('/login'),
+    ));
