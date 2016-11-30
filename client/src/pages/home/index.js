@@ -22,29 +22,10 @@ const Home = ({fetchQuestions, doAnswer, questions}) => {
   fetchQuestions();
 
   return (
-    <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-
-          <ul className="nav navbar-nav">
-            <li>
-              <a><b>Browse questions</b></a>
-            </li>
-            <li>
-              <Link to="/create">Create new question</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <div>
-        {questions.map(question => (
-          <Question key={question.id} question={question} onAnswer={doAnswer} />
-        ))}
-      </div>
+    <div className="container">
+      {questions.map(question => (
+        <Question key={question.id} question={question} onAnswer={doAnswer} />
+      ))}
     </div>
   );
 };
