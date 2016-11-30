@@ -1,6 +1,7 @@
 import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
-import {signRequest} from '../../util';
+import * as Actions from '../actions';
+import {signRequest, ajaxErrorToMessage} from '../../util';
 
 export const getAllQuestions = action$ => action$
   .ofType(ActionTypes.GET_ALL_QUESTIONS)
@@ -12,10 +13,15 @@ export const getAllQuestions = action$ => action$
       type: ActionTypes.GET_ALL_QUESTIONS_SUCCESS,
       payload: {questions},
     }))
-    .catch(error => Observable.of({
-      type: ActionTypes.GET_ALL_QUESTIONS_ERROR,
-      payload: {error},
-    })),
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.GET_ALL_QUESTIONS_ERROR,
+        payload: {error},
+      },
+      Actions.addNotificationAction(
+        {text: `[get all questions] Error: ${ajaxErrorToMessage(error)}`, alertType: 'danger'},
+      ),
+    )),
   );
 
 export const answerQuestion = action$ => action$
@@ -24,14 +30,24 @@ export const answerQuestion = action$ => action$
   .switchMap(({headers, payload}) => Observable
     .ajax.post(`http://localhost:8080/api/question/${payload.question.id}/answer`, {answer: payload.answer}, headers)
     .map(res => res.response)
-    .map(question => ({
-      type: ActionTypes.ANSWER_QUESTION_SUCCESS,
-      payload: question,
-    }))
-    .catch(error => Observable.of({
-      type: ActionTypes.ANSWER_QUESTION_ERROR,
-      payload: {error},
-    })),
+    .mergeMap(question => Observable.of(
+      {
+        type: ActionTypes.ANSWER_QUESTION_SUCCESS,
+        payload: question,
+      },
+      Actions.addNotificationAction(
+        {text: `Answer: "${payload.answer}" added to question: "${question.text}"`, alertType: 'info'},
+      ),
+    ))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.ANSWER_QUESTION_ERROR,
+        payload: {error},
+      },
+      Actions.addNotificationAction(
+        {text: `[answer create] Error: ${ajaxErrorToMessage(error)}`, alertType: 'danger'},
+      ),
+    )),
   );
 
 export const createQuestion = action$ => action$
@@ -40,13 +56,22 @@ export const createQuestion = action$ => action$
   .switchMap(({headers, payload}) => Observable
     .ajax.post('http://localhost:8080/api/question', payload, headers)
     .map(res => res.response)
-    .map(question => ({
-      type: ActionTypes.CREATE_QUESTION_SUCCESS,
-      payload: question,
-    }))
-    .catch(error => Observable.of({
-      type: ActionTypes.CREATE_QUESTION_ERROR,
-      payload: {error},
-    })),
+    .mergeMap(question => Observable.of(
+      {
+        type: ActionTypes.CREATE_QUESTION_SUCCESS,
+        payload: question,
+      },
+      Actions.addNotificationAction(
+        {text: `Question with text "${question.text}" created`, alertType: 'info'},
+      ),
+    ))
+    .catch(error => Observable.of(
+      {
+        type: ActionTypes.CREATE_QUESTION_ERROR,
+        payload: {error},
+      },
+      Actions.addNotificationAction(
+        {text: `[question create] Error: ${ajaxErrorToMessage(error)}`, alertType: 'danger'},
+      ),
+    )),
   );
-
