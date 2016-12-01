@@ -29,10 +29,10 @@ class App extends Component {
   }
 
   render() {
-    const {children} = this.props;
+    const {children, token} = this.props;
     return (
       <div className="container">
-        <Header {...this.props} />
+        {token ? <Header {...this.props} /> : null}
         {children}
         <Footer />
       </div>
