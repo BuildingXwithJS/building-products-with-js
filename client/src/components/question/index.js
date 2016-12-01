@@ -24,18 +24,20 @@ export default ({question, onAnswer}) => {
       </div>
       <div className="panel-footer">
         <form className="form-horizontal">
-          <div className="col-sm-10">
-            <input
-              type="text"
-              className="form-control"
-              id="answerInput"
-              placeholder="Enter your answer..."
-              ref={(i) => { answerInput = i; }}
-            />
+          <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                id="answerInput"
+                placeholder="Enter your answer..."
+                ref={(i) => { answerInput = i; }}
+              />
+              <span className="input-group-btn">
+                <button type="submit" className="btn btn-default" onClick={handleClick}>
+                  Answer
+                </button>
+              </span>
           </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>
-            Answer
-          </button>
         </form>
       </div>
     </div>
