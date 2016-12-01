@@ -3,8 +3,8 @@ import React from 'react';
 
 import NavBar from '../navbar';
 
-export default () => (
+export default (props) => (
   <header>
-    <NavBar />
+    <NavBar {...props}/>
   </header>
 );

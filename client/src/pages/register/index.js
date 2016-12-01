@@ -2,21 +2,15 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
 
 // our packages
 import {registerAction} from '../../store/actions';
 
-const mapStateToProps = state => ({
-  redirectToLogin: state.auth.redirectToLogin,
-});
-
 const mapDispatchToProps = dispatch => ({
-  navToLogin: () => dispatch(push('/login')),
   onRegisterClick: params => dispatch(registerAction(params)),
 });
 
-const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
+const Register = ({onRegisterClick}) => {
   let usernameInput;
   let passwordInput;
   let passwordInputRepeat;
@@ -30,11 +24,6 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
       passwordRepeat: passwordInputRepeat.value,
     });
   };
-
-  if (redirectToLogin) {
-    // TODO: figure out a better way to do nav
-    setImmediate(() => navToLogin());
-  }
 
   return (
     <div className="jumbotron">
@@ -78,4 +67,4 @@ const Register = ({onRegisterClick, navToLogin, redirectToLogin}) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register);

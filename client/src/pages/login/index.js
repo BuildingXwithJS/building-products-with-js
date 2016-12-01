@@ -2,21 +2,15 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
 
 // our packages
 import {loginAction} from '../../store/actions';
 
-const mapStateToProps = state => ({
-  token: state.auth.token,
-});
-
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
-  navToHome: () => dispatch(push('/')),
 });
 
-const Login = ({onLoginClick, navToHome, token}) => {
+const Login = ({onLoginClick}) => {
   let usernameInput;
   let passwordInput;
   let rememberInput;
@@ -30,11 +24,6 @@ const Login = ({onLoginClick, navToHome, token}) => {
       remember: rememberInput.checked,
     });
   };
-
-  if (token) {
-    // TODO: figure out a better way to do nav
-    setImmediate(() => navToHome());
-  }
 
   return (
     <div className="jumbotron">
@@ -77,4 +66,4 @@ const Login = ({onLoginClick, navToHome, token}) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

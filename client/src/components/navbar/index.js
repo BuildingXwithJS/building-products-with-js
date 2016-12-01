@@ -1,15 +1,9 @@
 // npm packages
 import React from 'react';
 import {Link} from 'react-router';
-import {connect} from 'react-redux';
 
 import NavbarLink from './navbarLink';
 import Logout from './logout';
-
-const mapStateToProps = state => ({
-  actualPath: state.routing.locationBeforeTransitions && state.routing.locationBeforeTransitions.pathname,
-  user: state.auth.user
-});
 
 const NavBar = ({actualPath, user}) => (
   <nav className="navbar navbar-default">
@@ -47,4 +41,4 @@ const NavBar = ({actualPath, user}) => (
   </nav>
 );
 
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
