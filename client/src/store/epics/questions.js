@@ -8,6 +8,7 @@ export const getAllQuestions = action$ => action$
   .map(signRequest)
   .switchMap(({headers}) => Observable
     .ajax.get('http://localhost:8080/api/question', headers)
+    .delay(2000) // TODO remove: it is a simple test for show the spinner while loading
     .map(res => res.response)
     .map(questions => ({
       type: ActionTypes.GET_ALL_QUESTIONS_SUCCESS,
