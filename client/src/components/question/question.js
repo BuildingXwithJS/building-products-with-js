@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import Answers from './answers.js';
+import AddAnswer from './addAnswer.js';
+
 class Question extends Component {
 
   constructor(props) {
@@ -10,16 +13,8 @@ class Question extends Component {
   }
 
   render() {
-    const {question, doAnswer} = this.props;
+    const {question} = this.props;
     const {collapse} = this.state;
-    let answerInput;
-
-    const handleAnswerClick = (e) => {
-      e.preventDefault();
-      doAnswer({question, answer: answerInput.value});
-      answerInput.value = '';
-      return false;
-    };
 
     const handleCollapseClick = (e) => {
       e.preventDefault();
@@ -37,37 +32,8 @@ class Question extends Component {
             onClick={handleCollapseClick} />{' '}
           {question.text}
         </div>
-        {collapse ? null :
-        <div className="panel-body">
-          {question.answers.length > 0 ? (
-            <ul className="list-group">
-              {question.answers.map((answer, i) => (
-                <li className="list-group-item" key={i}>{answer.answer}</li>
-              ))}
-            </ul>
-          ) : 'No answers yet'}
-        </div>
-        }
-        {collapse ? null :
-        <div className="panel-footer">
-          <form className="form-horizontal">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                id="answerInput"
-                placeholder="Enter your answer..."
-                ref={(i) => { answerInput = i; }}
-              />
-              <span className="input-group-btn">
-                <button type="submit" className="btn btn-default" onClick={handleAnswerClick}>
-                  Answer
-                </button>
-              </span>
-            </div>
-          </form>
-        </div>
-      }
+        {collapse ? null : <Answers question={question} loading />}
+        {collapse ? null : <AddAnswer question={question} />}
       </div>
     );
   }

@@ -14,8 +14,13 @@ export default (app) => {
   }));
 
   app.get('/api/question', passport.authenticate('jwt', {session: false}), asyncRequest(async (req, res) => {
-    // get 10 latest questions
-    const questions = await Question.orderBy(r.desc('creationDate')).limit(10);
+    const skip = parseInt(req.query.skip, 10) || 0;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const questions = await r.table('Question')
+                             .pluck('id', 'text', 'creationDate', 'expirationDate', 'owner')
+                             .orderBy(r.desc('creationDate'))
+                             .skip(skip)
+                             .limit(limit);
     // send question back
     res.send(questions);
   }));
