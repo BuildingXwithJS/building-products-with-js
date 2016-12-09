@@ -34,6 +34,16 @@ export const addNotificationAction = ({text, alertType}) => ({
   },
 });
 
+export const addObservable = observable => ({
+  type: ActionTypes.ADD_OBSERVABLE,
+  payload: observable,
+});
+
+export const removeObservable = observable => ({
+  type: ActionTypes.REMOVE_OBSERVABLE,
+  payload: observable,
+});
+
 /**
  * Remove a notification from the store.
  * @param {String} notificationId
