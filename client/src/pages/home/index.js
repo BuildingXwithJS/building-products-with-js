@@ -1,27 +1,22 @@
 // npm packages
 import React from 'react';
-import {connect} from 'react-redux';
 import MediaQuery from 'react-responsive';
 
 // our packages
 import {QuestionList, QuestionSingle} from '../../components/question';
 
-const mapStateToProps = state => ({
-  questions: state.questions.questions,
-});
-
-const Home = ({questions}) => (
+const Home = () => (
   <div className="container">
     <MediaQuery query="(min-width: 992px)">
       {(matches) => {
         if (matches) {
-          return <QuestionList questions={questions} />;
+          return <QuestionList />;
         } else {
-          return <QuestionSingle questions={questions} />;
+          return <QuestionSingle />;
         }
       }}
     </MediaQuery>
   </div>
 );
 
-export default connect(mapStateToProps)(Home);
+export default Home;

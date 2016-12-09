@@ -8,6 +8,7 @@ import {getMoreQuestions} from '../../store/actions';
 const mapStateToProps = state => ({
   hasMore: state.questions.hasMore,
   loadingMore: state.questions.status === 'loading',
+  questions: state.questions.questions,
 });
 
 

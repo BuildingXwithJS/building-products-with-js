@@ -9,6 +9,7 @@ import {Spinner} from '../../components/spinner';
 const mapStateToProps = state => ({
   hasMore: state.questions.hasMore,
   loadingMore: state.questions.status === 'loading',
+  questions: state.questions.questions,
 });
 
 
