@@ -54,7 +54,7 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
-    "jsonwebtoken": "^7.1.8",
+    "jsonwebtoken": "^7.2.1",
     "moment": "^2.14.1",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",

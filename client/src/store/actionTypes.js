@@ -2,6 +2,8 @@
 export const HELLO_WORLD = 'HELLO_WORLD';
 export const HELLO_WORLD_END = 'HELLO_WORLD_END';
 // auth actions
+export const INIT_AUTH = 'INIT_AUTH';
+export const INIT_AUTH_SUCCESS = 'INIT_AUTH_SUCCESS';
 export const DO_LOGIN = 'DO_LOGIN';
 export const DO_LOGOUT = 'DO_LOGOUT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -28,3 +30,6 @@ export const GET_ANSWERS_ERROR = 'GET_ANSWERS_ERROR';
 // observable actions
 export const ADD_OBSERVABLE = 'ADD_OBSERVABLE';
 export const REMOVE_OBSERVABLE = 'REMOVE_OBSERVABLE';
+// Websocket actions
+export const OPEN_WEBSOCKET_CONN = 'OPEN_WEBSOCKET_CONN';
+export const CLOSE_WEBSOCKET_CONN = 'CLOSE_WEBSOCKET_CONN';

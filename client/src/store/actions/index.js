@@ -6,6 +6,10 @@ export const helloWorldAction = () => ({
   type: ActionTypes.HELLO_WORLD,
 });
 
+export const initAuthAction = () => ({
+  type: ActionTypes.INIT_AUTH,
+});
+
 export const loginAction = payload => ({
   type: ActionTypes.DO_LOGIN,
   payload,

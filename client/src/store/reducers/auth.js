@@ -1,25 +1,17 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
 
-const getUser = () => {
-  const storedUser = localStorage.getItem('user.data');
-  // parse use from stored string
-  let user;
-  try {
-    user = JSON.parse(storedUser);
-  } catch (e) {
-    console.error('Error parsing user data', e);
-  }
-  return user;
-};
-
 const initialState = () => ({
-  token: localStorage.getItem('user.token'),
-  user: getUser(),
+  token: null,
+  user: null,
 });
 
 export const auth = (state = initialState(), action) => {
   switch (action.type) {
+    case ActionTypes.INIT_AUTH_SUCCESS:
+      return {
+        ...action.payload,
+      };
     case ActionTypes.REGISTER_SUCCESS:
       return {
         redirectToLogin: true,

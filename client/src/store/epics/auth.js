@@ -4,6 +4,35 @@ import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage} from '../../util';
 
+const getUser = () => {
+  const storedUser = localStorage.getItem('user.data');
+  // parse use from stored string
+  let user;
+  try {
+    user = JSON.parse(storedUser);
+  } catch (e) {
+    console.error('Error parsing user data', e);
+  }
+  return user;
+};
+
+export const initAuth = action$ => action$
+  .ofType(ActionTypes.INIT_AUTH)
+  .switchMap(() => {
+    const payload = {
+      user: getUser(),
+      token: localStorage.getItem('user.token'),
+    };
+
+    if (payload.token) {
+      return Observable.of({
+        type: ActionTypes.INIT_AUTH_SUCCESS,
+        payload,
+      });
+    } else {
+      return Observable.empty();
+    }
+  })
 
 // ASCII diagram for Rx Streams (see: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 

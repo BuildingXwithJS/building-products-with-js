@@ -7,6 +7,7 @@ import {routerMiddleware} from 'react-router-redux';
 // our packages
 import rootReducer from './rootReducer';
 import rootEpic from './rootEpic';
+import {initAuthAction} from './actions'
 
 // instantiate epic middleware
 const epicMiddleware = createEpicMiddleware(rootEpic);
@@ -29,5 +30,7 @@ if (module.hot) {
     store.replaceReducer(nextRootReducer);
   });
 }
+
+store.dispatch(initAuthAction());
 
 export default store;

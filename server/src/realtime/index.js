@@ -8,7 +8,7 @@ const options = {
   host: dbConfig.host,
   port: dbConfig.port,
   db: dbConfig.db,
-  unsafelyAllowAnyQuery: false,
+  unsafelyAllowAnyQuery: true,
 };
 
 const rethinkConn = r.connect(options);
