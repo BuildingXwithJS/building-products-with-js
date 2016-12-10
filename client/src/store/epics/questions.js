@@ -24,7 +24,6 @@ export const getMoreQuestions = action$ => action$
     )),
   );
 
-
 export const getAnswers = action$ => action$
   .ofType(ActionTypes.GET_ANSWERS)
   .map(signRequest)
@@ -60,7 +59,7 @@ export const answerQuestion = action$ => action$
       Actions.addNotificationAction(
         {text: `Answer: "${payload.answer}" added to question: "${question.text}"`, alertType: 'info'},
       ),
-      Actions.removeNotificationByRefAction(`update-question-${question.id}`),
+      Actions.removeNotificationByRefAction(question.id),
     ))
     .catch(error => Observable.of(
       {
@@ -97,4 +96,12 @@ export const createQuestion = action$ => action$
         {text: `Error while trying to create a question: ${ajaxErrorToMessage(error)}`, alertType: 'danger'},
       ),
     )),
+  );
+
+export const removePendingQuestionNotifications = action$ => action$
+  .ofType(ActionTypes.REMOVE_OBSERVABLE)
+  .filter(action => action.payload && action.payload.question)
+  .map(action => action.payload.question)
+  .map(question =>
+    Actions.removeNotificationByRefAction(question.id),
   );

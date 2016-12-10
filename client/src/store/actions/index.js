@@ -65,9 +65,9 @@ export const addObservable = observable => ({
   payload: observable,
 });
 
-export const removeObservable = observable => ({
+export const removeObservable = payload => ({
   type: ActionTypes.REMOVE_OBSERVABLE,
-  payload: observable,
+  payload,
 });
 
 export const getAnswers = questionId => ({

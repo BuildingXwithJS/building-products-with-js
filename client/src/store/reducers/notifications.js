@@ -24,7 +24,10 @@ export const notifications = (state = initialState, action) => {
     }
     case ActionTypes.REMOVE_NOTIFICATION_BY_REF: {
       const notificationRef = action.payload.notificationRef;
-      return state.filter(notification => notification.refCode !== notificationRef);
+      return state.filter(notification =>
+        !('refCode' in notification) ||
+        !notification.refCode.includes(notificationRef)
+      );
     }
     default:
       return state;

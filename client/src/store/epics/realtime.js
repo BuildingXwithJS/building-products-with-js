@@ -22,7 +22,7 @@ export const addObservable = (action$, {dispatch, getState}) => action$
       return observable.takeUntil(
         Observable.merge(
           action$.ofType(ActionTypes.REMOVE_OBSERVABLE)
-            .filter(action => action.payload === observableFn),
+            .filter(action => action.payload.observable === observableFn),
           action$.ofType(ActionTypes.CLOSE_WEBSOCKET_CONN),
         ),
       );
