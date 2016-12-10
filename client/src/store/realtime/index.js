@@ -7,7 +7,7 @@ import * as Actions from '../actions';
 const r = rethinkdb;
 
 export const registerQuestionObservable = questionId => conn =>
-  Observable.fromPromise(r.table('Question').get(questionId).changes().run(conn))
+  Observable.fromPromise(r.table('Question').filter({id: questionId}).changes().run(conn))
   .switchMap(cursor => Observable.create((observer) => {
     cursor.each((err, row) => {
       if (err) throw err;
