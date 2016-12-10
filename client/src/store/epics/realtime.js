@@ -18,11 +18,11 @@ export const addObservable = (action$, {getState}) => action$
   .mergeMap(({payload: observableFn}) => {
     const {conn} = getState().realtime;
     if (conn && conn.isOpen()) {
-      const observable = observableFn(conn);
+      const observable = observableFn(conn, getState);
       return observable.takeUntil(
         Observable.merge(
           action$.ofType(ActionTypes.REMOVE_OBSERVABLE)
-          .filter(action => action.payload === observableFn),
+            .filter(action => action.payload === observableFn),
           action$.ofType(ActionTypes.CLOSE_WEBSOCKET_CONN),
         ),
       );

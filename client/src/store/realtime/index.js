@@ -1,12 +1,13 @@
 import {Observable} from 'rxjs/Observable';
 import {rethinkdb} from 'rethinkdb-websocket-client';
+import _ from 'lodash';
 
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 
 const r = rethinkdb;
 
-export const registerQuestionObservable = questionId => conn =>
+export const registerQuestionObservable = questionId => (conn, getState) =>
   Observable.fromPromise(r.table('Question').filter({id: questionId}).changes().run(conn))
   .switchMap(cursor => Observable.create((observer) => {
     cursor.each((err, row) => {
@@ -16,9 +17,15 @@ export const registerQuestionObservable = questionId => conn =>
     return function() {
       cursor.close();
     };
-  }))
+  }).debounceTime(5000))
   .map(row => row.new_val)
-  .filter(question => !!question)
+  .filter((question) => {
+    if (!question) {
+      return false;
+    }
+    const storedQuestion = _.find(getState().questions.questions, {id: question.id});
+    return !storedQuestion || !_.isEqual(storedQuestion.answers, question.answers);
+  })
   .map(question => ({
     type: ActionTypes.GET_ANSWERS_SUCCESS,
     payload: question,
