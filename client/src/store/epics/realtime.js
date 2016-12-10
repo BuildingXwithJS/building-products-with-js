@@ -13,7 +13,7 @@ const options = {
   db: 'expertsdb',        // default database, passed to rethinkdb.connect
 };
 
-export const addObservable = (action$, {getState}) => action$
+export const addObservable = (action$, {dispatch, getState}) => action$
   .ofType(ActionTypes.ADD_OBSERVABLE)
   .mergeMap(({payload: observableFn}) => {
     const {conn} = getState().realtime;
@@ -33,12 +33,21 @@ export const addObservable = (action$, {getState}) => action$
       Actions.addNotificationAction({text: `[add observable error] ${error.toString()}`, alertType: 'danger'}),
   ));
 
-export const openConnection = (action$, {getState}) => action$
+export const openConnection = (action$, {dispatch, getState}) => action$
   .ofType(ActionTypes.LOGIN_SUCCESS, ActionTypes.INIT_AUTH_SUCCESS)
   .switchMap(() => {
     const {token} = getState().auth;
     options.path = `/realtime?authToken=${token}`;
     return Observable.fromPromise(connect(options));
+  })
+  .do((conn) => {
+    if (conn && conn.isOpen()) {
+      conn.on('close', () => {
+        dispatch({
+          type: ActionTypes.CLOSE_WEBSOCKET_CONN,
+        });
+      });
+    }
   })
   .map(conn =>
     ({
