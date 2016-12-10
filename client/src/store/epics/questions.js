@@ -8,6 +8,7 @@ export const getMoreQuestions = action$ => action$
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
     .ajax.get(`http://localhost:8080/api/question?skip=${payload.skip || 0}&limit=${payload.limit || 10}`, headers)
+    .delayInDebug(2000)
     .map(res => res.response)
     .map(questions => ({
       type: ActionTypes.GET_MORE_QUESTIONS_SUCCESS,
@@ -29,6 +30,7 @@ export const getAnswers = action$ => action$
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
     .ajax.get(`http://localhost:8080/api/question/${payload.questionId}`, headers)
+    .delayInDebug(2000)
     .map(res => res.response)
     .map(question => ({
       type: ActionTypes.GET_ANSWERS_SUCCESS,
@@ -50,6 +52,7 @@ export const answerQuestion = action$ => action$
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
     .ajax.post(`http://localhost:8080/api/question/${payload.question.id}/answer`, {answer: payload.answer}, headers)
+    .delayInDebug(2000)
     .map(res => res.response)
     .mergeMap(question => Observable.of(
       {

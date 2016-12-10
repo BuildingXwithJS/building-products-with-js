@@ -5,3 +5,5 @@ export {
   ajaxErrorToMessage,
 } from './errorToMessage';
 export {signRequest} from './signRequest.js';
+
+require('./rxjs');
