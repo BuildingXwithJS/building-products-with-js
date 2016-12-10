@@ -29,12 +29,11 @@ export const registerAction = payload => ({
  * @param {String} text - text to display
  * @param {String} alertType - Bootstrap alert style: success | info | warning | danger
 */
-export const addNotificationAction = ({text, alertType}) => ({
+export const addNotificationAction = payload => ({
   type: ActionTypes.ADD_NOTIFICATION,
   payload: {
     id: nextNotificationId++,
-    text,
-    alertType,
+    ...payload,
   },
 });
 

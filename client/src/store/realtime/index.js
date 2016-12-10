@@ -26,10 +26,13 @@ export const registerQuestionObservable = questionId => (conn, getState) =>
     const storedQuestion = _.find(getState().questions.questions, {id: question.id});
     return !storedQuestion || !_.isEqual(storedQuestion.answers, question.answers);
   })
-  .map(question => ({
-    type: ActionTypes.GET_ANSWERS_SUCCESS,
-    payload: question,
-  }))
+  .map(question => Actions.addNotificationAction(
+    {
+      text: `Question with text "${question.text}" has been externally modified.`,
+      alertType: 'warning',
+      autoDisposable: false,
+      duplicationCode: `update-question-${question.id}`,
+    }))
   .catch(error => Observable.of(
     Actions.addNotificationAction({text: error.toString(), alertType: 'danger'}),
   ));
