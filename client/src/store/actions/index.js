@@ -37,6 +37,8 @@ export const addNotificationAction = payload => ({
   },
 });
 
+export const getNextNotificationId = () => nextNotificationId;
+
 export const addObservable = observable => ({
   type: ActionTypes.ADD_OBSERVABLE,
   payload: observable,
