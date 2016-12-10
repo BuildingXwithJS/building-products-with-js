@@ -7,9 +7,9 @@ export const notifications = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.ADD_NOTIFICATION: {
       const {payload} = action;
-      const {duplicationCode} = payload;
+      const {refCode} = payload;
 
-      if (duplicationCode && _.find(state, {duplicationCode})) {
+      if (refCode && _.find(state, {refCode})) {
         return state;
       }
 
@@ -21,6 +21,10 @@ export const notifications = (state = initialState, action) => {
     case ActionTypes.REMOVE_NOTIFICATION: {
       const notificationId = action.payload.notificationId;
       return state.filter(notification => notification.id !== notificationId);
+    }
+    case ActionTypes.REMOVE_NOTIFICATION_BY_REF: {
+      const notificationRef = action.payload.notificationRef;
+      return state.filter(notification => notification.refCode !== notificationRef);
     }
     default:
       return state;

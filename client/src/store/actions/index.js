@@ -39,6 +39,27 @@ export const addNotificationAction = payload => ({
 
 export const getNextNotificationId = () => nextNotificationId;
 
+
+/**
+ * Remove a notification from the store.
+ * @param {String} notificationId
+*/
+export const removeNotificationAction = notificationId => ({
+  type: ActionTypes.REMOVE_NOTIFICATION,
+  payload: {notificationId},
+});
+
+export const removeNotificationByRefAction = notificationRef => ({
+  type: ActionTypes.REMOVE_NOTIFICATION_BY_REF,
+  payload: {notificationRef},
+});
+
+
+export const getMoreQuestions = payload => ({
+  type: ActionTypes.GET_MORE_QUESTIONS,
+  payload,
+});
+
 export const addObservable = observable => ({
   type: ActionTypes.ADD_OBSERVABLE,
   payload: observable,
@@ -47,21 +68,6 @@ export const addObservable = observable => ({
 export const removeObservable = observable => ({
   type: ActionTypes.REMOVE_OBSERVABLE,
   payload: observable,
-});
-
-/**
- * Remove a notification from the store.
- * @param {String} notificationId
-*/
-
-export const removeNotificationAction = notificationId => ({
-  type: ActionTypes.REMOVE_NOTIFICATION,
-  payload: {notificationId},
-});
-
-export const getMoreQuestions = payload => ({
-  type: ActionTypes.GET_MORE_QUESTIONS,
-  payload,
 });
 
 export const getAnswers = questionId => ({

@@ -19,7 +19,7 @@ const UpdateQuestionNotification = ({notificationId, question, onRemoveNotificat
   const textAlert = (
     <div>
       Question with text &quot;{question.text}&quot; has been externally modified.
-      Pulse <a onClick={onClickUpdate}>here</a> to update.
+      Pulse <a href="#" onClick={onClickUpdate}>here</a> to update.
     </div>);
 
   return textAlert;

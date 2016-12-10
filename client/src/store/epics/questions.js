@@ -60,6 +60,7 @@ export const answerQuestion = action$ => action$
       Actions.addNotificationAction(
         {text: `Answer: "${payload.answer}" added to question: "${question.text}"`, alertType: 'info'},
       ),
+      Actions.removeNotificationByRefAction(`update-question-${question.id}`),
     ))
     .catch(error => Observable.of(
       {

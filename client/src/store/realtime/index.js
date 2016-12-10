@@ -33,7 +33,7 @@ export const registerQuestionObservable = questionId => (conn, getState) =>
       text: <UpdateQuestionNotification notificationId={notificationId} question={question} />,
       alertType: 'warning',
       autoDisposable: false,
-      duplicationCode: `update-question-${question.id}`,
+      refCode: `update-question-${question.id}`,
     });
   })
   .catch(error => Observable.of(
