@@ -58,6 +58,7 @@
     "moment": "^2.14.1",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
     "rethinkdb-websocket-server": "^0.6.0",

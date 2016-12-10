@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node serve.js",
-    "dist": "rm -rf dist/ && webpack -p --config webpack.production.config.js",
+    "dist": "webpack -p --config webpack.production.config.js",
     "start-prod": "npm run dist -- && pushstate-server ."
   },
   "repository": {

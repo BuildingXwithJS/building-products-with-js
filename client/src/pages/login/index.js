@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 // our packages
 import {loginAction} from '../../store/actions';
+import GitHubLogo from '../../components/github';
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: params => dispatch(loginAction(params)),
@@ -29,8 +30,14 @@ const Login = ({onLoginClick}) => {
     <div className="container" style={{marginTop: '100px'}}>
       <div className="jumbotron">
         <h2>Experts portal:</h2>
-        <p>Please log in. Or <Link to="/register">register</Link></p>
-
+        <div className="row">
+          <div className="col-xs-6">
+            <p>Please log in. Or <Link to="/register">register</Link></p>
+          </div>
+          <div className="col-xs-2 col-md-1">
+            <GitHubLogo />
+          </div>
+        </div>
         <form>
           <div className="form-group">
             <label htmlFor="inputUsername">Username:</label>

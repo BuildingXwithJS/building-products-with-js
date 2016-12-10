@@ -15,6 +15,12 @@ export const loginAction = payload => ({
   payload,
 });
 
+export const githubLoginAction = payload => ({
+  type: ActionTypes.DO_GITHUB_LOGIN,
+  payload,
+});
+
+
 export const logoutAction = () => ({
   type: ActionTypes.DO_LOGOUT,
 });

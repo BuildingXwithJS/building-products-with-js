@@ -3,3 +3,4 @@ server/db/
 server/lib/
 npm-debug.log
 client/dist/
+!client/dist/redirecting.html

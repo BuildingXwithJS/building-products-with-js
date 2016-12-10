@@ -53,7 +53,7 @@ class NavBar extends Component {
               </NavbarLink>
             </ul>
             {user ? <ul className="nav navbar-nav navbar-right">
-              <li><a>Logged as {user.login}</a></li>
+              <li><a>Logged as {user.login}{user.provider ? ` (${user.provider})` : null}</a></li>
               <Logout />
             </ul> : null}
           </div>

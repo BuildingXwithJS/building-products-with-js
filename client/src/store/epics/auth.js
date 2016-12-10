@@ -74,6 +74,31 @@ export const login = action$ => action$
     )),
   );
 
+export const githubLogin = action$ => action$
+  .ofType(ActionTypes.DO_GITHUB_LOGIN)
+  .switchMap(({payload}) => {
+    if (payload.error) {
+      return Observable.of(
+        {
+          type: ActionTypes.LOGIN_ERROR,
+          payload: {
+            error: payload.error,
+          },
+        },
+        Actions.addNotificationAction({text: `GitHub Login error: ${payload.error}`, alertType: 'danger'}),
+      );
+    } else {
+      return Observable.of(
+        {
+          type: ActionTypes.LOGIN_SUCCESS,
+          payload,
+        },
+        Actions.addNotificationAction(
+          {text: 'GitHub Login success', alertType: 'info'}),
+      );
+    }
+  });
+
 // Similar to login
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
