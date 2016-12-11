@@ -3,7 +3,7 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 
 // our packages
-import {auth as authConfig} from '../../config';
+import {auth as authConfig, client as clientConfig} from '../../config';
 
 export default (app) => {
   app.post('/api/login', passport.authenticate('local'), (req, res) => {
@@ -23,7 +23,10 @@ export default (app) => {
     }));
 
   app.get('/api/github/callback',
-    passport.authenticate('github', {failureRedirect: '/login', session: false}),
+    passport.authenticate('github', {
+      failureRedirect: `http://${clientConfig.host}:${clientConfig.port}/dist/redirecting.html#error=authentication failed`,
+      session: false}
+    ),
     (req, res) => {
       if (req.user) {
         const githubUser = req.user.profile;
@@ -37,7 +40,9 @@ export default (app) => {
         };
 
         const token = jwt.sign(user, authConfig.jwtSecret);
-        res.redirect(`http://localhost:3000/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`);
+        res.redirect(
+          `http://${clientConfig.host}:${clientConfig.port}/dist/redirecting.html#token=${token}&user=${JSON.stringify(user)}`
+        );
       } else {
         res.status(401).send({error: 'Error logging in!'});
       }

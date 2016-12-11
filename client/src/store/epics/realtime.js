@@ -3,11 +3,12 @@ import {connect} from 'rethinkdb-websocket-client';
 
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
+import {server as serverConfig} from '../../../config';
 
 // Open a WebSocket connection to the server to send RethinkDB queries over
 const options = {
-  host: 'localhost', // hostname of the websocket server
-  port: 8080,        // port number of the websocket server
+  host: serverConfig.host, // hostname of the websocket server
+  port: serverConfig.port,  // port number of the websocket server
   // path: '/realtime',       // HTTP path to websocket route
   secure: false,     // set true to use secure TLS websockets
   db: 'expertsdb',        // default database, passed to rethinkdb.connect

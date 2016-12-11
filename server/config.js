@@ -4,6 +4,16 @@ exports.db = {
   db: 'expertsdb',
 };
 
+exports.server = {
+  host: process.env.EXPERTS_SERVER_URL || 'localhost',
+  port: process.env.EXPERTS_SERVER_PORT || 8080,
+};
+
+exports.client = {
+  host: process.env.EXPERTS_CLIENT_URL || 'localhost',
+  port: process.env.EXPERTS_CLIENT_PORT || 3000,
+};
+
 exports.auth = {
   passwordSalt: process.env.EXPERTS_AUTH_PASSALT ||
     'Gq0twQYeoP6YWZY7iBc!NyhVavauPHB5Q6jPU$LMzCxw@SM&y$udLVnmF0qu!%XR',

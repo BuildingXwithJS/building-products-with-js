@@ -3,6 +3,10 @@ import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {loginErrorToMessage, registerErrorToMessage} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+const host = serverConfig.host;
+const port = serverConfig.port;
 
 const getUser = () => {
   const storedUser = localStorage.getItem('user.data');
@@ -53,7 +57,7 @@ export const initAuth = action$ => action$
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/login', payload)
+    .ajax.post(`http://${host}:${port}/api/login`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
@@ -103,7 +107,7 @@ export const githubLogin = action$ => action$
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/register', payload)
+    .ajax.post(`http://${host}:${port}/api/register`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {

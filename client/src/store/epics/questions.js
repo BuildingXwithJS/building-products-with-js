@@ -1,13 +1,18 @@
 import {Observable} from 'rxjs/Observable';
+
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
 import {signRequest, ajaxErrorToMessage} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+const host = serverConfig.host;
+const port = serverConfig.port;
 
 export const getMoreQuestions = action$ => action$
   .ofType(ActionTypes.GET_MORE_QUESTIONS)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/question?skip=${payload.skip || 0}&limit=${payload.limit || 10}`, headers)
+    .ajax.get(`http://${host}:${port}/api/question?skip=${payload.skip || 0}&limit=${payload.limit || 10}`, headers)
     .delayInDebug(2000)
     .map(res => res.response)
     .map(questions => ({
@@ -29,7 +34,7 @@ export const getAnswers = action$ => action$
   .ofType(ActionTypes.GET_ANSWERS)
   .map(signRequest)
   .mergeMap(({headers, payload}) => Observable
-    .ajax.get(`http://localhost:8080/api/question/${payload.questionId}`, headers)
+    .ajax.get(`http://${host}:${port}/api/question/${payload.questionId}`, headers)
     .delayInDebug(2000)
     .map(res => res.response)
     .map(question => ({
@@ -51,7 +56,7 @@ export const answerQuestion = action$ => action$
   .ofType(ActionTypes.ANSWER_QUESTION)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post(`http://localhost:8080/api/question/${payload.question.id}/answer`, {answer: payload.answer}, headers)
+    .ajax.post(`http://${host}:${port}/api/question/${payload.question.id}/answer`, {answer: payload.answer}, headers)
     .delayInDebug(2000)
     .map(res => res.response)
     .mergeMap(question => Observable.of(
@@ -79,7 +84,7 @@ export const createQuestion = action$ => action$
   .ofType(ActionTypes.CREATE_QUESTION)
   .map(signRequest)
   .switchMap(({headers, payload}) => Observable
-    .ajax.post('http://localhost:8080/api/question', payload, headers)
+    .ajax.post(`http://${host}:${port}/api/question`, payload, headers)
     .map(res => res.response)
     .mergeMap(question => Observable.of(
       {

@@ -6,12 +6,16 @@ import {connect} from 'react-redux';
 import {githubLoginAction} from '../../store/actions';
 import githubLogo from '../../img/github.png';
 import {popupwindow} from '../../util';
+import {server as serverConfig} from '../../../config';
+
+const host = serverConfig.host;
+const port = serverConfig.port;
 
 const mapDispatchToProps = dispatch => ({
   handleGitHubLogin: payload => dispatch(githubLoginAction(payload)),
 });
 
-const authUrl = 'http://localhost:8080/api/github/login';
+const authUrl = `http://${host}:${port}/api/github/login`;
 
 let authWindow = null;
 
