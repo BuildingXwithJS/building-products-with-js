@@ -1,3 +1,10 @@
 export {requireAuth} from './requireAuth';
-export {loginErrorToMessage, registerErrorToMessage} from './errorToMessage';
-export {signRequest} from './signRequest.js';
+export {
+  loginErrorToMessage,
+  registerErrorToMessage,
+  ajaxErrorToMessage,
+} from './errorToMessage';
+export {signRequest} from './signRequest';
+export {popupwindow} from './popup';
+
+require('./rxjs');

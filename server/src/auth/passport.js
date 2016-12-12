@@ -2,10 +2,11 @@
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt';
+import {Strategy as GitHubStrategy} from 'passport-github';
 
 // our packages
 import {User} from '../db';
-import {hash} from '../util';
+import {hash, logger} from '../util';
 import {auth as authConfig} from '../../config';
 
 // define serialize and deserialize functions
@@ -54,6 +55,10 @@ const jwtOpts = {
   secretOrKey: authConfig.jwtSecret,
 };
 passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
+  // skip database validation for OAuth users
+  if (payload.provider) {
+    return done(null, payload); // TODO validate accessToken against provider
+  }
   let user;
   try {
     user = await User.get(payload.id)
@@ -68,4 +73,17 @@ passport.use(new JwtStrategy(jwtOpts, async (payload, done) => {
   }
   // return user if successful
   return done(null, user);
+}));
+
+// use GitHubStrategy
+passport.use(new GitHubStrategy({
+  clientID: authConfig.github.clientID,
+  clientSecret: authConfig.github.clientSecret,
+  callbackURL: authConfig.github.callbackURL,
+  scope: authConfig.github.scope,
+}, (accessToken, refreshToken, profile, done) => {
+  logger.info(
+    `New GitHub token [accessToken: ${accessToken}, refreshToken: ${refreshToken}, profile: ${JSON.stringify(profile)}]`
+  );
+  done(null, {accessToken, refreshToken, profile});
 }));
