@@ -5,8 +5,8 @@ export const notifications = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.ADD_NOTIFICATION:
       return [
-        ...state,
         action.payload,
+        ...state,
       ];
     case ActionTypes.REMOVE_NOTIFICATION: {
       const notificationId = action.payload.notificationId;

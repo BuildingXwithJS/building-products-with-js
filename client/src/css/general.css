@@ -1,0 +1,9 @@
+html {
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  html {
+    overflow-y: scroll;
+  }
+}

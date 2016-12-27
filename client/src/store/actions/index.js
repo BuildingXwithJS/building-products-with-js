@@ -11,6 +11,10 @@ export const loginAction = payload => ({
   payload,
 });
 
+export const logoutAction = () => ({
+  type: ActionTypes.DO_LOGOUT,
+});
+
 export const registerAction = payload => ({
   type: ActionTypes.DO_REGISTER,
   payload,
