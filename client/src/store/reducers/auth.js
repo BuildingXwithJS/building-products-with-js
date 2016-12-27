@@ -1,21 +1,24 @@
 // our packages
 import * as ActionTypes from '../actionTypes';
 
-const storedUser = localStorage.getItem('user.data');
-// parse use from stored string
-let user;
-try {
-  user = JSON.parse(storedUser);
-} catch (e) {
-  console.error('Error parsing user data', e);
-}
-
-const initialState = {
-  token: localStorage.getItem('user.token'),
-  user,
+const getUser = () => {
+  const storedUser = localStorage.getItem('user.data');
+  // parse use from stored string
+  let user;
+  try {
+    user = JSON.parse(storedUser);
+  } catch (e) {
+    console.error('Error parsing user data', e);
+  }
+  return user;
 };
 
-export const auth = (state = initialState, action) => {
+const initialState = () => ({
+  token: localStorage.getItem('user.token'),
+  user: getUser(),
+});
+
+export const auth = (state = initialState(), action) => {
   switch (action.type) {
     case ActionTypes.REGISTER_SUCCESS:
       return {
@@ -31,6 +34,10 @@ export const auth = (state = initialState, action) => {
     case ActionTypes.REGISTER_ERROR:
       // TODO: probably necessary in the future
       return state;
+    case ActionTypes.DO_LOGOUT:
+      localStorage.removeItem('user.token');
+      localStorage.removeItem('user.data');
+      return initialState();
     default:
       return state;
   }

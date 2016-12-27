@@ -11,8 +11,7 @@ const Notification = ({onRemoveNotificationClick, notification}) => (
   <div className={`alert alert-dismissible alert-${notification.alertType}`} role="alert">
     <button
       type="button"
-      className="close"
-      data-dismiss="alert" aria-label="Close"
+      className="close" aria-label="Close"
       onClick={() => onRemoveNotificationClick(notification.id)}
     >
       <span aria-hidden="true">&times;</span>
