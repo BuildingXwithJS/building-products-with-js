@@ -5,18 +5,17 @@ import {Notifications} from '../notifications';
 
 const style = {
   footer: {
-    position: 'absolute',
+    zIndex: 9999,
+    position: 'fixed',
     bottom: '0',
-    width: '100%',
+    width: '90%',
   },
 };
 
 export default () => (
   <footer style={style.footer}>
-    <div className="row">
-      <div className="col-xs-11 col-sm-9 col-md-7">
-        <Notifications />
-      </div>
+    <div className="col-md-8">
+      <Notifications />
     </div>
   </footer>
 );

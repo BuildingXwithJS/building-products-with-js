@@ -8,6 +8,11 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/general.css';
+
+// JQuery for Bootstrap
+global.jQuery = require('jquery/dist/jquery.min.js');
+require('bootstrap/dist/js/bootstrap.min.js');
 
 // our packages
 import App from './app';
@@ -31,7 +36,7 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
-        <Route path="create" component={Create} />
+        <Route path="create" component={Create} onEnter={requireAuth} />
         <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>
