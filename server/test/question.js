@@ -146,14 +146,14 @@ export default (test) => {
         t.error(err, 'No error');
         t.equal(actualBody.length, 2, 'Retrieve 2 questions');
         t.equal(actualBody[0].text, sharedInputOther.text, 'Retrieve same question text');
-        t.equal(actualBody[0].owner, app.get('other-user').id, 'Question belongs to correct user');
+        t.equal(actualBody[0].owner.id, app.get('other-user').id, 'Question belongs to correct user');
         t.ok(moment(actualBody[0].creationDate).isValid(), 'Creation date must be valid');
         t.ok(
           moment(actualBody[0].expirationDate).isSame(sharedInputOther.expirationDate),
           'Retrieve same question expirationDate'
         );
         t.equal(actualBody[1].text, sharedInput.text, 'Retrieve same question text');
-        t.equal(actualBody[1].owner, app.get('user').id, 'Question belongs to correct user');
+        t.equal(actualBody[1].owner.id, app.get('user').id, 'Question belongs to correct user');
         t.ok(moment(actualBody[1].creationDate).isValid(), 'Creation date must be valid');
         t.ok(
           moment(actualBody[1].expirationDate).isSame(sharedInput.expirationDate),

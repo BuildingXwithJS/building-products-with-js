@@ -2,7 +2,7 @@
 import passport from 'passport';
 
 // our packages
-import {r, Question, User} from '../db';
+import {r, Question} from '../db';
 import {asyncRequest} from '../util';
 
 export default (app) => {
@@ -17,7 +17,10 @@ export default (app) => {
     // get 10 latest questions
     const questions = await Question
       .merge(q => ({
-        owner: r.db('expertsdb').table('User').get(q('owner')).without(['password']),
+        owner: r.db('expertsdb')
+          .table('User')
+          .get(q('owner'))
+          .without(['password']),
       }))
       .orderBy(r.desc('creationDate'))
       .limit(10)
