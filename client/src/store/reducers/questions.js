@@ -18,6 +18,7 @@ export const questions = (state = initialState, action) => {
     case ActionTypes.ANSWER_QUESTION_ERROR:
     case ActionTypes.CREATE_QUESTION_ERROR:
     case ActionTypes.GET_ALL_QUESTIONS_ERROR:
+    case ActionTypes.DELETE_QUESTION_ERROR:
       return {
         ...state,
         status: 'error',
@@ -30,6 +31,10 @@ export const questions = (state = initialState, action) => {
     }
     case ActionTypes.CREATE_QUESTION_SUCCESS: {
       const newQuestions = [...state.questions, action.payload];
+      return {...state, questions: newQuestions};
+    }
+    case ActionTypes.DELETE_QUESTION_SUCCESS: {
+      const newQuestions = state.questions.filter(q => q.id !== action.payload.id);
       return {...state, questions: newQuestions};
     }
     default:

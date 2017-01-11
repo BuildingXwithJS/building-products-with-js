@@ -1,19 +1,44 @@
+// npm packages
 import React from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
-export default ({question, onAnswer}) => {
+// our packages
+import {deleteQuestion} from '../../store/actions';
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+const mapDispatchToProps = (dispatch) => ({
+  deleteQuestion: payload => dispatch(deleteQuestion(payload)),
+});
+
+const Question = ({question, user, onAnswer, deleteQuestion}) => {
   let answerInput;
 
-  const handleClick = (e) => {
+  const handleAnswerClick = (e) => {
     e.preventDefault();
     onAnswer({question, answer: answerInput.value});
     answerInput.value = '';
     return false;
   };
 
+  const handleDeleteQuestionClick = (e) => {
+    e.preventDefault();
+    deleteQuestion(question);
+    return false;
+  };
+
   return (
     <div className="panel panel-default">
       <div className="panel-heading">
+        {user.id === question.owner.id && (
+          <span>
+            <button className="btn btn-link" onClick={handleDeleteQuestionClick}>
+              <span className="glyphicon glyphicon-trash" />
+            </button>
+          </span>
+        )}
         {question.text}
 
         <div className="pull-right">
@@ -40,7 +65,7 @@ export default ({question, onAnswer}) => {
               ref={(i) => { answerInput = i; }}
             />
           </div>
-          <button type="submit" className="btn btn-default" onClick={handleClick}>
+          <button type="submit" className="btn btn-default" onClick={handleAnswerClick}>
             Answer
           </button>
         </form>
@@ -48,3 +73,5 @@ export default ({question, onAnswer}) => {
     </div>
   );
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

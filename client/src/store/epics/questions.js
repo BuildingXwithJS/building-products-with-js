@@ -50,3 +50,18 @@ export const createQuestion = action$ => action$
     })),
   );
 
+export const deleteQuestion = action$ => action$
+  .ofType(ActionTypes.DELETE_QUESTION)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.delete(`http://localhost:8080/api/question/${payload.id}`, headers)
+    .map(res => res.response)
+    .map(() => ({
+      type: ActionTypes.DELETE_QUESTION_SUCCESS,
+      payload,
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.DELETE_QUESTION_ERROR,
+      payload: {error},
+    })),
+  );
