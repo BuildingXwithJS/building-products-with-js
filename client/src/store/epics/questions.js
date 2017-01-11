@@ -65,3 +65,19 @@ export const deleteQuestion = action$ => action$
       payload: {error},
     })),
   );
+
+export const updateQuestion = action$ => action$
+  .ofType(ActionTypes.UPDATE_QUESTION)
+  .map(signRequest)
+  .switchMap(({headers, payload}) => Observable
+    .ajax.post(`http://localhost:8080/api/question/${payload.id}`, payload, headers)
+    .map(res => res.response)
+    .map(question => ({
+      type: ActionTypes.UPDATE_QUESTION_SUCCESS,
+      payload: question,
+    }))
+    .catch(error => Observable.of({
+      type: ActionTypes.UPDATE_QUESTION_ERROR,
+      payload: {error},
+    })),
+  );

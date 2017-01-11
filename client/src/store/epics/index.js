@@ -1,7 +1,7 @@
 import {login, register} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloworld';
-import {getAllQuestions, answerQuestion, createQuestion, deleteQuestion} from './questions';
+import {getAllQuestions, answerQuestion, createQuestion, deleteQuestion, updateQuestion} from './questions';
 import {getUser, updateUser} from './users';
 
 export default [
@@ -16,6 +16,7 @@ export default [
   answerQuestion,
   createQuestion,
   deleteQuestion,
+  updateQuestion,
   // users
   getUser,
   updateUser,
