@@ -53,3 +53,10 @@ export const createQuestion = payload => ({
   type: ActionTypes.CREATE_QUESTION,
   payload,
 });
+
+// users
+
+export const getUser = (payload) => ({
+  type: ActionTypes.GET_USER,
+  payload,
+});

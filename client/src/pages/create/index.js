@@ -6,9 +6,10 @@ import moment from 'moment';
 
 // our packages
 import {createQuestion} from '../../store/actions';
+import Navbar from '../../components/navbar';
 
 const mapStateToProps = (state) => ({
-  // questions: state.questions.questions,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Create = ({doCreateQuestion}) => {
+const Create = ({doCreateQuestion, user}) => {
   let questionText;
   let questionDate;
 
@@ -33,22 +34,7 @@ const Create = ({doCreateQuestion}) => {
 
   return (
     <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-
-          <ul className="nav navbar-nav">
-            <li>
-              <Link to="/">Browse questions</Link>
-            </li>
-            <li>
-              <a><b>Create new question</b></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar user={user} current={'/create'} />
 
       <div>
         <form>

@@ -7,9 +7,11 @@ import {connect} from 'react-redux';
 // our packages
 import {getAllQuestions, answerQuestion} from '../../store/actions';
 import Question from '../../components/question';
+import Navbar from '../../components/navbar';
 
 const mapStateToProps = (state) => ({
   questions: state.questions.questions,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,27 +20,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Home = ({fetchQuestions, doAnswer, questions}) => {
+const Home = ({fetchQuestions, doAnswer, questions, user}) => {
   fetchQuestions();
 
   return (
     <div>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Brand</Link>
-          </div>
-
-          <ul className="nav navbar-nav">
-            <li>
-              <a><b>Browse questions</b></a>
-            </li>
-            <li>
-              <Link to="/create">Create new question</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar user={user} current={'/'} />
 
       <div>
         {questions.map(question => (
