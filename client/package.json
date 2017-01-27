@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node serve.js",
     "test": "jest",
+    "test:watch": "jest --watch",
     "cover": "jest --coverage"
   },
   "repository": {
@@ -26,7 +27,15 @@
   },
   "homepage": "https://github.com/yamalight/building-products-with-js#readme",
   "jest": {
-    "setupTestFrameworkScriptFile": "./test/setup.js"
+    "setupFiles": [
+      "./test/setup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    }
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -40,6 +49,8 @@
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.26.1",
+    "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.4.5",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -47,8 +58,10 @@
     "eslint-plugin-react": "^6.7.1",
     "express": "^4.14.0",
     "file-loader": "^0.9.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^18.1.0",
     "json-loader": "^0.5.4",
+    "react-addons-test-utils": "^15.4.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",

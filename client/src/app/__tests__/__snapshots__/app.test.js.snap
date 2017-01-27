@@ -1,0 +1,7 @@
+exports[`test # App 1`] = `
+<div
+  className="container">
+  test
+  <Component />
+</div>
+`;

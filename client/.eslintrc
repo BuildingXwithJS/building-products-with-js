@@ -2,7 +2,13 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
   },
   "rules": {
     "object-curly-spacing": ["warn", "never"],
