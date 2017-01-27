@@ -1,0 +1,101 @@
+exports[`test # Question 1`] = `
+<div
+  className="panel panel-default">
+  <div
+    className="panel-heading">
+    <span>
+      <button
+        className="btn btn-link"
+        id="deleteBtn"
+        onClick={[Function]}>
+        <span
+          className="glyphicon glyphicon-trash" />
+      </button>
+      <button
+        className="btn btn-link"
+        id="editBtn"
+        onClick={[Function]}>
+        <span
+          className="glyphicon glyphicon-pencil" />
+      </button>
+    </span>
+    Question text
+    <div
+      className="pull-right">
+      <Link
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/profile/0">
+        test
+      </Link>
+    </div>
+  </div>
+  <div
+    className="panel-body">
+    <ul
+      className="list-group">
+      <li
+        className="list-group-item">
+        Test answer
+      </li>
+    </ul>
+  </div>
+  <div
+    className="panel-footer">
+    <form
+      className="form-horizontal">
+      <div
+        className="col-sm-10">
+        <input
+          className="form-control"
+          id="answerInput"
+          placeholder="Enter your answer..."
+          type="text" />
+      </div>
+      <button
+        className="btn btn-default"
+        id="answerBtn"
+        onClick={[Function]}
+        type="submit">
+        Answer
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`test # QuestionWrapper 1`] = `
+<Question
+  deleteQuestion={[Function]}
+  question={
+    Object {
+      "answers": Array [
+        Object {
+          "answer": "Test answer",
+        },
+      ],
+      "owner": Object {
+        "id": "0",
+        "login": "test",
+      },
+      "text": "Question text",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  updateQuestion={[Function]}
+  user={
+    Object {
+      "id": "0",
+      "login": "test",
+    }
+  } />
+`;

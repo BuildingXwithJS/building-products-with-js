@@ -1,0 +1,121 @@
+exports[`test # Navbar 1`] = `
+<nav
+  className="navbar navbar-default">
+  <div
+    className="container-fluid">
+    <div
+      className="navbar-header">
+      <Link
+        className="navbar-brand"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/">
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav">
+      <li>
+        <a>
+          <b>
+            Browse questions
+          </b>
+        </a>
+      </li>
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/create">
+          Create new question
+        </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`test # Navbar 2`] = `
+<nav
+  className="navbar navbar-default">
+  <div
+    className="container-fluid">
+    <div
+      className="navbar-header">
+      <Link
+        className="navbar-brand"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/">
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav">
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/">
+          Browse questions
+        </Link>
+      </li>
+      <li>
+        <a>
+          <b>
+            Create new question
+          </b>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`test # Navbar 3`] = `
+<nav
+  className="navbar navbar-default">
+  <div
+    className="container-fluid">
+    <div
+      className="navbar-header">
+      <Link
+        className="navbar-brand"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/">
+        Brand
+      </Link>
+    </div>
+    <ul
+      className="nav navbar-nav">
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/">
+          Browse questions
+        </Link>
+      </li>
+      <li>
+        <Link
+          onlyActiveOnIndex={false}
+          style={Object {}}
+          to="/create">
+          Create new question
+        </Link>
+      </li>
+    </ul>
+    <ul
+      className="nav navbar-nav navbar-right">
+      <li>
+        <a>
+          <b>
+            Logged in as \"test\"
+          </b>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

@@ -1,0 +1,15 @@
+exports[`test # Notifications 1`] = `
+<Notifications
+  dispatch={[Function]}
+  notifications={Array []}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  } />
+`;

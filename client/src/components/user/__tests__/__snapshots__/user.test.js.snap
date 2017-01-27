@@ -1,0 +1,48 @@
+exports[`test # User 1`] = `
+<div
+  className="panel panel-default">
+  <div
+    className="panel-heading">
+    User: 
+    <input
+      defaultValue="test"
+      id="loginInput"
+      type="text" />
+    <div
+      className="pull-right">
+      <button
+        className="btn btn-default"
+        onClick={[Function]}>
+        Save
+      </button>
+    </div>
+  </div>
+  <div
+    className="panel-body">
+    Registration date: 
+    Mon Feb 01 2016 01:01:01 GMT+0100
+  </div>
+</div>
+`;
+
+exports[`test # UserWrapper 1`] = `
+<User
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  updateUser={[Function]}
+  user={
+    Object {
+      "id": "0",
+      "login": "test",
+      "registrationDate": 2016-02-01T00:01:01.001Z,
+    }
+  } />
+`;

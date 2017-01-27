@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
   onRemoveNotificationClick: notificationId => dispatch(removeNotificationAction(notificationId)),
 });
 
-const Notification = ({onRemoveNotificationClick, notification}) => (
+export const Notification = ({onRemoveNotificationClick, notification}) => (
   <div className={`alert alert-dismissible alert-${notification.alertType}`} role="alert">
     <button
       type="button"

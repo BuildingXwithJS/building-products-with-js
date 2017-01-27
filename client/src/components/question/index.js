@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateQuestion: payload => dispatch(updateQuestion(payload)),
 });
 
-class Question extends React.Component {
+export class Question extends React.Component {
   constructor() {
     super();
 
@@ -62,11 +62,11 @@ class Question extends React.Component {
         <div className="panel-heading">
           {user.id === question.owner.id && (
             <span>
-              <button className="btn btn-link" onClick={this.handleDeleteQuestionClick}>
+              <button className="btn btn-link" id="deleteBtn" onClick={e => this.handleDeleteQuestionClick(e)}>
                 <span className="glyphicon glyphicon-trash" />
               </button>
               {editing ? '' : (
-                <button className="btn btn-link" onClick={e => this.toggleEdit(e)}>
+                <button className="btn btn-link" id="editBtn" onClick={e => this.toggleEdit(e)}>
                   <span className="glyphicon glyphicon-pencil" />
                 </button>
               )}
@@ -74,8 +74,8 @@ class Question extends React.Component {
           )}
           {editing ? (
             <span>
-              <input type="text" ref={i => { this.questionInput = i; }} defaultValue={question.text} />
-              <button className="btn btn-link" onClick={e => this.handleUpdateQuestionClick(e)}>
+              <input type="text" id="questionText" ref={i => { this.questionInput = i; }} defaultValue={question.text} />
+              <button className="btn btn-link" id="updateBtn" onClick={e => this.handleUpdateQuestionClick(e)}>
                 <span className="glyphicon glyphicon-ok" />
               </button>
               <button className="btn btn-link" onClick={e => this.toggleEdit(e)}>
@@ -108,7 +108,7 @@ class Question extends React.Component {
                 ref={(i) => { this.answerInput = i; }}
               />
             </div>
-            <button type="submit" className="btn btn-default" onClick={this.handleAnswerClick}>
+            <button type="submit" id="answerBtn" className="btn btn-default" onClick={e => this.handleAnswerClick(e)}>
               Answer
             </button>
           </form>
