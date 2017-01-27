@@ -7,7 +7,7 @@ let user;
 try {
   user = JSON.parse(storedUser);
 } catch (e) {
-  console.error('Error parsing user data', e);
+  // console.error('Error parsing user data', e);
 }
 
 const initialState = {
