@@ -1,0 +1,69 @@
+exports[`test # Create page 1`] = `
+<div>
+  <Component
+    current="/create"
+    user={
+      Object {
+        "id": "0",
+        "login": "test",
+        "registrationDate": 2016-02-01T00:01:01.001Z,
+      }
+    } />
+  <div>
+    <form>
+      <div
+        className="form-group">
+        <label
+          htmlFor="questionText">
+          Question text
+        </label>
+        <input
+          className="form-control"
+          id="questionText"
+          placeholder="Question text"
+          type="text" />
+      </div>
+      <div
+        className="form-group">
+        <label
+          htmlFor="expirationDate">
+          Expiration date
+        </label>
+        <input
+          className="form-control"
+          id="expirationDate"
+          placeholder="Expiration date"
+          type="date" />
+      </div>
+      <button
+        className="btn btn-default"
+        onClick={[Function]}
+        type="submit">
+        Create new question
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`test # Create page wrapper 1`] = `
+<Create
+  doCreateQuestion={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  user={
+    Object {
+      "id": "0",
+      "login": "test",
+      "registrationDate": 2016-02-01T00:01:01.001Z,
+    }
+  } />
+`;

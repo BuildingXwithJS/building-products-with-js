@@ -1,6 +1,5 @@
 // npm packages
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
@@ -17,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Create = ({doCreateQuestion, user}) => {
+export const Create = ({doCreateQuestion, user}) => {
   let questionText;
   let questionDate;
 
