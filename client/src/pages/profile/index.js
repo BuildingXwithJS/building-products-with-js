@@ -1,7 +1,5 @@
 // npm packages
 import React from 'react';
-import _ from 'lodash';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 // our packages
@@ -18,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   getUser: payload => dispatch(getUser(payload)),
 });
 
-class Home extends React.Component {
+export class Profile extends React.Component {
   constructor() {
     super();
 
@@ -41,6 +39,6 @@ class Home extends React.Component {
       </div>
     );
   }
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
