@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   navToHome: () => dispatch(push('/')),
 });
 
-const Login = ({onLoginClick, navToHome, token}) => {
+export const Login = ({onLoginClick, navToHome, token}) => {
   let usernameInput;
   let passwordInput;
   let rememberInput;
