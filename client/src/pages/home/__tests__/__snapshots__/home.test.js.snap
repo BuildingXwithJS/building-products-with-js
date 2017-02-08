@@ -1,0 +1,57 @@
+exports[`test # Home page 1`] = `
+<div>
+  <Component
+    current="/"
+    user={
+      Object {
+        "id": "0",
+        "login": "test",
+        "registrationDate": 2016-02-01T00:01:01.001Z,
+      }
+    } />
+  <div>
+    <Connect(Question)
+      onAnswer={[Function]}
+      question={
+        Object {
+          "answers": Array [
+            Object {
+              "answer": "Test answer",
+            },
+          ],
+          "id": 0,
+          "owner": Object {
+            "id": "0",
+            "login": "test",
+            "registrationDate": 2016-02-01T00:01:01.001Z,
+          },
+          "text": "Question text",
+        }
+      } />
+  </div>
+</div>
+`;
+
+exports[`test # Home page wrapper 1`] = `
+<Home
+  doAnswer={[Function]}
+  fetchQuestions={[Function]}
+  questions={Array []}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  user={
+    Object {
+      "id": "0",
+      "login": "test",
+      "registrationDate": 2016-02-01T00:01:01.001Z,
+    }
+  } />
+`;
