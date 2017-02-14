@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
-import {signRequest} from '../../util';
+import {signRequest} from '../../util/signRequest';
 
 export const getAllQuestions = action$ => action$
   .ofType(ActionTypes.GET_ALL_QUESTIONS)
