@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/Observable';
 import * as ActionTypes from '../actionTypes';
 import * as Actions from '../actions';
-import {loginErrorToMessage, registerErrorToMessage} from '../../util';
+import {loginErrorToMessage, registerErrorToMessage} from '../../util/errorToMessage';
 
 
 // ASCII diagram for Rx Streams (see: https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
