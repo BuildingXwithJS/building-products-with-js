@@ -28,6 +28,7 @@ test('# auth reducer - login success', () => {
     payload: {token: '123', user, test: true},
   };
 
+  // TODO: check localStorage
   expect(auth(testState, action).test).toBeTruthy();
   expect(auth(testState, action).user).toEqual(user);
   expect(auth(testState, action).token).toBe('123');

@@ -12,7 +12,7 @@ import login from './login';
 import user from './user';
 import question from './question';
 
-export default (reqlite) => {
+export default () => {
   thinky.dbReady().then(() => {
     // clean the database
     test(async (t) => {
@@ -31,7 +31,6 @@ export default (reqlite) => {
     // close db connections
     test((t) => {
       setImmediate(() => r.getPoolMaster().drain());
-      reqlite.stop();
       t.end();
     });
   });

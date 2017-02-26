@@ -27,20 +27,19 @@
   },
   "homepage": "https://github.com/yamalight/building-products-with-js#readme",
   "devDependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-core": "^6.11.4",
-    "babel-eslint": "^6.1.2",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
     "babel-preset-es2015-node": "^6.1.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.1.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.11.1",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^5.2.2",
-    "reqlite": "^2.3.0",
-    "supertest": "^1.2.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "supertest": "^3.0.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "tape": "^4.6.3"
   },
   "babel": {
     "presets": [
@@ -49,18 +48,18 @@
     ]
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
-    "express": "^4.14.0",
-    "express-session": "^1.14.0",
-    "jsonwebtoken": "^7.1.8",
-    "moment": "^2.14.1",
-    "morgan": "^1.7.0",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "jsonwebtoken": "^7.3.0",
+    "moment": "^2.17.1",
+    "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
     "passport-local": "^1.0.0",
-    "thinky": "^2.3.4",
-    "winston": "^2.2.0"
+    "thinky": "^2.3.8",
+    "winston": "^2.3.1"
   }
 }

@@ -23,8 +23,9 @@ build-server:
 test-server:
   stage: test
   script:
+    - docker run -d --name expertsdb rethinkdb
     - docker pull $SERVER_TEST_IMAGE
-    - docker run $SERVER_TEST_IMAGE npm test
+    - docker run --link expertsdb:expertsdb -e EXPERTS_DB_URL=expertsdb $SERVER_TEST_IMAGE npm test
 
 release-server:
   stage: release
