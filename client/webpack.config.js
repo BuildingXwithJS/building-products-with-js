@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  debug: true,
   context: path.resolve(__dirname, 'src'),
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
@@ -11,23 +10,26 @@ module.exports = {
     filename: 'app.min.js',
   },
   resolve: {
-    root: path.resolve(__dirname),
-    extensions: ['', '.js', '.json'],
-    modulesDirectories: ['node_modules'],
+    modules: [path.resolve(__dirname), 'node_modules'],
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.css$/,
-      loaders: ['style', 'css?modules'],
+      use: ['style-loader', {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+        },
+      }],
       exclude: /node_modules/,
     }, {
       test: /node_modules\/.+\.css$/,
-      loaders: ['style', 'css'],
+      use: ['style-loader', 'css-loader'],
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
+      loader: 'babel-loader',
+      options: {
         cacheDirectory: true,
         presets: ['es2015', 'react', 'stage-0'],
         plugins: ['transform-runtime'],
@@ -41,26 +43,46 @@ module.exports = {
         },
       },
     }, {
-      test: /\.json$/,
-      loader: 'json',
-    }, {
       test: /\.woff\d?(\?.+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'application/font-woff',
+      },
     }, {
       test: /\.ttf(\?.+)?$/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'application/octet-stream',
+      },
     }, {
       test: /\.eot(\?.+)?$/,
-      loader: 'url?limit=10000',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+      },
     }, {
       test: /\.svg(\?.+)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'image/svg+xml',
+      },
     }, {
       test: /\.png$/,
-      loader: 'url?limit=10000&mimetype=image/png',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'image/png',
+      },
     }, {
       test: /\.gif$/,
-      loader: 'url?limit=10000&mimetype=image/gif',
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        mimetype: 'image/gif',
+      },
     }],
   },
 };

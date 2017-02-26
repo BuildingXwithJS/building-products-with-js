@@ -5,27 +5,71 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('./webpack.config');
 
 // create express
 const app = express();
 
-// setup hot reload
+// get the environment
+const isProduction = process.env.NODE_ENV === 'production';
+
+// setup plugins
 config.plugins = [
   // define plugin for node env
   new webpack.DefinePlugin({
     'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)},
   }),
+];
+// if not in prod - setup hot reload
+if (!isProduction) {
   // hot reload plugin
-  new webpack.HotModuleReplacementPlugin(),
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
   // setup no erros plugin
-  new webpack.NoErrorsPlugin(),
-];
-// override entry for hotload
-config.entry = [
-  'webpack-hot-middleware/client',
-  config.entry,
-];
+  config.plugins.push(new webpack.NoEmitOnErrorsPlugin());
+}
+
+// override entry for hot reload
+if (!isProduction) {
+  config.entry = [
+    'webpack-hot-middleware/client',
+    config.entry,
+  ];
+}
+
+// tweak config for production
+if (isProduction) {
+  // set devtool to cheap source map
+  config.devtool = 'cheap-source-map';
+
+  // extract styles into file
+  const extractCSS = new ExtractTextPlugin('main.css');
+  config.plugins.push(extractCSS);
+  config.module.rules[0].use = ExtractTextPlugin.extract({ // eslint-disable-line
+    fallback: 'style-loader',
+    use: [{
+      loader: 'css-loader',
+      options: {
+        modules: true,
+        minimize: true,
+      },
+    }],
+  });
+  config.module.rules[1].use = ExtractTextPlugin.extract({ // eslint-disable-line
+    fallback: 'style-loader',
+    use: [{
+      loader: 'css-loader',
+      options: {
+        minimize: true,
+      },
+    }],
+  });
+
+  // add js optimization plugins
+  config.plugins.push(new webpack.LoaderOptionsPlugin({minimize: true}));
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
 // returns a Compiler instance
 const compiler = webpack(config);
 // stats output config
@@ -42,7 +86,11 @@ app.use(webpackMiddleware(compiler, {
   contentBase: 'src',
   stats: statsConf,
 }));
-app.use(webpackHotMiddleware(compiler));
+
+// add hot reload middleware if not in production
+if (!isProduction) {
+  app.use(webpackHotMiddleware(compiler));
+}
 
 // serve statics
 app.use(express.static(__dirname));
