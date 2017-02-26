@@ -1,20 +1,27 @@
-exports[`test # Navbar 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Navbar 1`] = `
 <nav
-  className="navbar navbar-default">
+  className="navbar navbar-default"
+>
   <div
-    className="container-fluid">
+    className="container-fluid"
+  >
     <div
-      className="navbar-header">
+      className="navbar-header"
+    >
       <Link
         className="navbar-brand"
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/">
+        to="/"
+      >
         Brand
       </Link>
     </div>
     <ul
-      className="nav navbar-nav">
+      className="nav navbar-nav"
+    >
       <li>
         <a>
           <b>
@@ -26,7 +33,8 @@ exports[`test # Navbar 1`] = `
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/create">
+          to="/create"
+        >
           Create new question
         </Link>
       </li>
@@ -35,28 +43,34 @@ exports[`test # Navbar 1`] = `
 </nav>
 `;
 
-exports[`test # Navbar 2`] = `
+exports[`# Navbar 2`] = `
 <nav
-  className="navbar navbar-default">
+  className="navbar navbar-default"
+>
   <div
-    className="container-fluid">
+    className="container-fluid"
+  >
     <div
-      className="navbar-header">
+      className="navbar-header"
+    >
       <Link
         className="navbar-brand"
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/">
+        to="/"
+      >
         Brand
       </Link>
     </div>
     <ul
-      className="nav navbar-nav">
+      className="nav navbar-nav"
+    >
       <li>
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/">
+          to="/"
+        >
           Browse questions
         </Link>
       </li>
@@ -72,28 +86,34 @@ exports[`test # Navbar 2`] = `
 </nav>
 `;
 
-exports[`test # Navbar 3`] = `
+exports[`# Navbar 3`] = `
 <nav
-  className="navbar navbar-default">
+  className="navbar navbar-default"
+>
   <div
-    className="container-fluid">
+    className="container-fluid"
+  >
     <div
-      className="navbar-header">
+      className="navbar-header"
+    >
       <Link
         className="navbar-brand"
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/">
+        to="/"
+      >
         Brand
       </Link>
     </div>
     <ul
-      className="nav navbar-nav">
+      className="nav navbar-nav"
+    >
       <li>
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/">
+          to="/"
+        >
           Browse questions
         </Link>
       </li>
@@ -101,17 +121,19 @@ exports[`test # Navbar 3`] = `
         <Link
           onlyActiveOnIndex={false}
           style={Object {}}
-          to="/create">
+          to="/create"
+        >
           Create new question
         </Link>
       </li>
     </ul>
     <ul
-      className="nav navbar-nav navbar-right">
+      className="nav navbar-nav navbar-right"
+    >
       <li>
         <a>
           <b>
-            Logged in as \"test\"
+            Logged in as "test"
           </b>
         </a>
       </li>

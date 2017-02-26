@@ -1,4 +1,6 @@
-exports[`test # Notifications 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Notifications 1`] = `
 <Notifications
   dispatch={[Function]}
   notifications={Array []}
@@ -11,5 +13,24 @@ exports[`test # Notifications 1`] = `
       "replaceReducer": [Function],
       "subscribe": [Function],
     }
-  } />
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
 `;

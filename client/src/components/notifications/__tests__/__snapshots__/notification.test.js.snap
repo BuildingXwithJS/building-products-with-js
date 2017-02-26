@@ -1,15 +1,20 @@
-exports[`test # Notification 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Notification 1`] = `
 <div
   className="alert alert-dismissible alert-test"
-  role="alert">
+  role="alert"
+>
   <button
     aria-label="Close"
     className="close"
     data-dismiss="alert"
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
     <span
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       ×
     </span>
   </button>
@@ -17,7 +22,7 @@ exports[`test # Notification 1`] = `
 </div>
 `;
 
-exports[`test # NotificationWrapper 1`] = `
+exports[`# NotificationWrapper 1`] = `
 <Notification
   notification={
     Object {
@@ -36,5 +41,6 @@ exports[`test # NotificationWrapper 1`] = `
       "replaceReducer": [Function],
       "subscribe": [Function],
     }
-  } />
+  }
+/>
 `;

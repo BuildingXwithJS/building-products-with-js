@@ -1,4 +1,6 @@
-exports[`test # Footer 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Footer 1`] = `
 <footer
   style={
     Object {
@@ -6,11 +8,14 @@ exports[`test # Footer 1`] = `
       "position": "absolute",
       "width": "100%",
     }
-  }>
+  }
+>
   <div
-    className="row">
+    className="row"
+  >
     <div
-      className="col-xs-11 col-sm-9 col-md-7">
+      className="col-xs-11 col-sm-9 col-md-7"
+    >
       <Connect(Notifications) />
     </div>
   </div>

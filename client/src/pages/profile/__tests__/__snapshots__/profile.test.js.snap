@@ -1,4 +1,6 @@
-exports[`test # Profile page 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Profile page 1`] = `
 <div>
   <Component
     current="/profile/0"
@@ -8,7 +10,8 @@ exports[`test # Profile page 1`] = `
         "login": "test",
         "registrationDate": 2016-02-01T00:01:01.001Z,
       }
-    } />
+    }
+  />
   <Connect(User)
     edit={true}
     user={
@@ -17,11 +20,12 @@ exports[`test # Profile page 1`] = `
         "login": "test",
         "registrationDate": 2016-02-01T00:01:01.001Z,
       }
-    } />
+    }
+  />
 </div>
 `;
 
-exports[`test # Profile page wrapper 1`] = `
+exports[`# Profile page wrapper 1`] = `
 <Profile
   getUser={[Function]}
   loadedUser={
@@ -41,11 +45,30 @@ exports[`test # Profile page wrapper 1`] = `
       "subscribe": [Function],
     }
   }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
   user={
     Object {
       "id": "0",
       "login": "test",
       "registrationDate": 2016-02-01T00:01:01.001Z,
     }
-  } />
+  }
+/>
 `;

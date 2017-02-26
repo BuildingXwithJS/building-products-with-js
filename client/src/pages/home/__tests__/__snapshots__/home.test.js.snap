@@ -1,4 +1,6 @@
-exports[`test # Home page 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Home page 1`] = `
 <div>
   <Component
     current="/"
@@ -8,7 +10,8 @@ exports[`test # Home page 1`] = `
         "login": "test",
         "registrationDate": 2016-02-01T00:01:01.001Z,
       }
-    } />
+    }
+  />
   <div>
     <Connect(Question)
       onAnswer={[Function]}
@@ -27,12 +30,13 @@ exports[`test # Home page 1`] = `
           },
           "text": "Question text",
         }
-      } />
+      }
+    />
   </div>
 </div>
 `;
 
-exports[`test # Home page wrapper 1`] = `
+exports[`# Home page wrapper 1`] = `
 <Home
   doAnswer={[Function]}
   fetchQuestions={[Function]}
@@ -47,11 +51,30 @@ exports[`test # Home page wrapper 1`] = `
       "subscribe": [Function],
     }
   }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
   user={
     Object {
       "id": "0",
       "login": "test",
       "registrationDate": 2016-02-01T00:01:01.001Z,
     }
-  } />
+  }
+/>
 `;

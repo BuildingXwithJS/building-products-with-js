@@ -1,62 +1,80 @@
-exports[`test # Question 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Question 1`] = `
 <div
-  className="panel panel-default">
+  className="panel panel-default"
+>
   <div
-    className="panel-heading">
+    className="panel-heading"
+  >
     <span>
       <button
         className="btn btn-link"
         id="deleteBtn"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="glyphicon glyphicon-trash" />
+          className="glyphicon glyphicon-trash"
+        />
       </button>
       <button
         className="btn btn-link"
         id="editBtn"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         <span
-          className="glyphicon glyphicon-pencil" />
+          className="glyphicon glyphicon-pencil"
+        />
       </button>
     </span>
     Question text
     <div
-      className="pull-right">
+      className="pull-right"
+    >
       <Link
         onlyActiveOnIndex={false}
         style={Object {}}
-        to="/profile/0">
+        to="/profile/0"
+      >
         test
       </Link>
     </div>
   </div>
   <div
-    className="panel-body">
+    className="panel-body"
+  >
     <ul
-      className="list-group">
+      className="list-group"
+    >
       <li
-        className="list-group-item">
+        className="list-group-item"
+      >
         Test answer
       </li>
     </ul>
   </div>
   <div
-    className="panel-footer">
+    className="panel-footer"
+  >
     <form
-      className="form-horizontal">
+      className="form-horizontal"
+    >
       <div
-        className="col-sm-10">
+        className="col-sm-10"
+      >
         <input
           className="form-control"
           id="answerInput"
           placeholder="Enter your answer..."
-          type="text" />
+          type="text"
+        />
       </div>
       <button
         className="btn btn-default"
         id="answerBtn"
         onClick={[Function]}
-        type="submit">
+        type="submit"
+      >
         Answer
       </button>
     </form>
@@ -64,7 +82,7 @@ exports[`test # Question 1`] = `
 </div>
 `;
 
-exports[`test # QuestionWrapper 1`] = `
+exports[`# QuestionWrapper 1`] = `
 <Question
   deleteQuestion={[Function]}
   question={
@@ -91,11 +109,30 @@ exports[`test # QuestionWrapper 1`] = `
       "subscribe": [Function],
     }
   }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
   updateQuestion={[Function]}
   user={
     Object {
       "id": "0",
       "login": "test",
     }
-  } />
+  }
+/>
 `;

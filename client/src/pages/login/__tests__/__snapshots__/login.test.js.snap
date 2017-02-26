@@ -1,6 +1,9 @@
-exports[`test # Login page 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Login page 1`] = `
 <div
-  className="jumbotron">
+  className="jumbotron"
+>
   <h2>
     Experts portal:
   </h2>
@@ -9,56 +12,67 @@ exports[`test # Login page 1`] = `
     <Link
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/register">
+      to="/register"
+    >
       register
     </Link>
   </p>
   <form>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <label
-        htmlFor="inputUsername">
+        htmlFor="inputUsername"
+      >
         Username:
       </label>
       <input
         className="form-control"
         id="inputUsername"
         placeholder="Username"
-        type="text" />
+        type="text"
+      />
     </div>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <label
-        htmlFor="inputPassword">
+        htmlFor="inputPassword"
+      >
         Password
       </label>
       <input
         className="form-control"
         id="inputPassword"
         placeholder="Password"
-        type="password" />
+        type="password"
+      />
     </div>
     <div
-      className="checkbox">
+      className="checkbox"
+    >
       <label
-        htmlFor="inputRemember">
+        htmlFor="inputRemember"
+      >
         <input
           id="inputRemember"
-          type="checkbox" />
+          type="checkbox"
+        />
          Remember me
       </label>
     </div>
     <button
       className="btn btn-default"
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Login
     </button>
   </form>
 </div>
 `;
 
-exports[`test # Login page wrapper 1`] = `
+exports[`# Login page wrapper 1`] = `
 <Login
   navToHome={[Function]}
   onLoginClick={[Function]}
@@ -71,5 +85,24 @@ exports[`test # Login page wrapper 1`] = `
       "replaceReducer": [Function],
       "subscribe": [Function],
     }
-  } />
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
 `;

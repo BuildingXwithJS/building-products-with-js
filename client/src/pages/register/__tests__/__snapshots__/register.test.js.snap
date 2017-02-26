@@ -1,6 +1,9 @@
-exports[`test # Register page 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# Register page 1`] = `
 <div
-  className="jumbotron">
+  className="jumbotron"
+>
   <h2>
     Experts portal:
   </h2>
@@ -9,58 +12,69 @@ exports[`test # Register page 1`] = `
     <Link
       onlyActiveOnIndex={false}
       style={Object {}}
-      to="/login">
+      to="/login"
+    >
       login
     </Link>
   </p>
   <form>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <label
-        htmlFor="inputUsername">
+        htmlFor="inputUsername"
+      >
         Username:
       </label>
       <input
         className="form-control"
         id="inputUsername"
         placeholder="Username"
-        type="text" />
+        type="text"
+      />
     </div>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <label
-        htmlFor="inputPassword">
+        htmlFor="inputPassword"
+      >
         Password
       </label>
       <input
         className="form-control"
         id="inputPassword"
         placeholder="Password"
-        type="password" />
+        type="password"
+      />
     </div>
     <div
-      className="form-group">
+      className="form-group"
+    >
       <label
-        htmlFor="inputPasswordRepeat">
+        htmlFor="inputPasswordRepeat"
+      >
         Password
       </label>
       <input
         className="form-control"
         id="inputPasswordRepeat"
         placeholder="Repeat password"
-        type="password" />
+        type="password"
+      />
     </div>
     <button
       className="btn btn-default"
       onClick={[Function]}
-      type="submit">
+      type="submit"
+    >
       Register
     </button>
   </form>
 </div>
 `;
 
-exports[`test # Register page wrapper 1`] = `
+exports[`# Register page wrapper 1`] = `
 <Register
   navToLogin={[Function]}
   onRegisterClick={[Function]}
@@ -74,5 +88,24 @@ exports[`test # Register page wrapper 1`] = `
       "replaceReducer": [Function],
       "subscribe": [Function],
     }
-  } />
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
+/>
 `;

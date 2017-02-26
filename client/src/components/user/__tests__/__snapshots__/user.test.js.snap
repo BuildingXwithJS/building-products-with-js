@@ -1,31 +1,39 @@
-exports[`test # User 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`# User 1`] = `
 <div
-  className="panel panel-default">
+  className="panel panel-default"
+>
   <div
-    className="panel-heading">
+    className="panel-heading"
+  >
     User: 
     <input
       defaultValue="test"
       id="loginInput"
-      type="text" />
+      type="text"
+    />
     <div
-      className="pull-right">
+      className="pull-right"
+    >
       <button
         className="btn btn-default"
-        onClick={[Function]}>
+        onClick={[Function]}
+      >
         Save
       </button>
     </div>
   </div>
   <div
-    className="panel-body">
+    className="panel-body"
+  >
     Registration date: 
     Mon Feb 01 2016 01:01:01 GMT+0100
   </div>
 </div>
 `;
 
-exports[`test # UserWrapper 1`] = `
+exports[`# UserWrapper 1`] = `
 <User
   store={
     Object {
@@ -37,6 +45,24 @@ exports[`test # UserWrapper 1`] = `
       "subscribe": [Function],
     }
   }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "notify": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": null,
+    }
+  }
   updateUser={[Function]}
   user={
     Object {
@@ -44,5 +70,6 @@ exports[`test # UserWrapper 1`] = `
       "login": "test",
       "registrationDate": 2016-02-01T00:01:01.001Z,
     }
-  } />
+  }
+/>
 `;
