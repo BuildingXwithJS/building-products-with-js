@@ -2,7 +2,6 @@
 import test from 'tape';
 
 // our packages
-import {db as dbConfig} from '../config';
 import {thinky, r} from '../src/db';
 
 // tests
@@ -12,26 +11,17 @@ import login from './login';
 import user from './user';
 import question from './question';
 
-export default () => {
-  thinky.dbReady().then(() => {
-    // clean the database
-    test(async (t) => {
-      await r.db(dbConfig.db).table('User').delete();
-      await r.db(dbConfig.db).table('Question').delete();
-      t.end();
-    });
+thinky.dbReady().then(() => {
+  // execute tests
+  core(test);
+  register(test);
+  login(test);
+  user(test);
+  question(test);
 
-    // execute tests
-    core(test);
-    register(test);
-    login(test);
-    user(test);
-    question(test);
-
-    // close db connections
-    test((t) => {
-      setImmediate(() => r.getPoolMaster().drain());
-      t.end();
-    });
+  // close db connections
+  test((t) => {
+    setImmediate(() => r.getPoolMaster().drain());
+    t.end();
   });
-};
+});

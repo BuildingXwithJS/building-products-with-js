@@ -5,5 +5,4 @@ process.env.NODE_ENV = 'testing';
 // require babel require hook
 require('babel-core/register');
 // require and start main tests
-const startTests = require('./main').default;
-startTests();
+require('./main');
