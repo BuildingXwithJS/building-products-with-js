@@ -26,7 +26,7 @@ run:
 		-e LETSENCRYPT_HOST=bpwjsapi.codezen.net \
 		-e LETSENCRYPT_EMAIL=ermilov@codezen.ru \
 		-e EXPERTS_DB_URL=db \
-		bpwjs-server
+		yamalight/bpwjs-server
 	docker run -d \
 		--name bpwjs-client \
 		--net codezen_nginx \
@@ -34,4 +34,4 @@ run:
 		-e LETSENCRYPT_HOST=bpwjs.codezen.net \
 		-e LETSENCRYPT_EMAIL=ermilov@codezen.ru \
 		-e API_HOST=https://bpwjsapi.codezen.net \
-		bpwjs-client
+		yamalight/bpwjs-client
