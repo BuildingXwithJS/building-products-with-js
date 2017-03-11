@@ -63,6 +63,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^19.0.2",
     "json-loader": "^0.5.4",
+    "lodash-webpack-plugin": "^0.11.2",
     "react-addons-test-utils": "^15.4.2",
     "redux-mock-store": "^1.2.2",
     "style-loader": "^0.13.2",
