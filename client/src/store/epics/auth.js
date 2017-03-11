@@ -23,7 +23,7 @@ import {loginErrorToMessage, registerErrorToMessage} from '../../util/errorToMes
 export const login = action$ => action$
   .ofType(ActionTypes.DO_LOGIN)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/login', payload)
+    .ajax.post(`${API_HOST}/api/login`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {
@@ -48,7 +48,7 @@ export const login = action$ => action$
 export const register = action$ => action$
   .ofType(ActionTypes.DO_REGISTER)
   .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/register', payload)
+    .ajax.post(`${API_HOST}/api/register`, payload)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {

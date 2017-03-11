@@ -21,6 +21,9 @@ const localStorageMock = (() => {
 })();
 Object.defineProperty(window, 'localStorage', {value: localStorageMock});
 
+// setup default API_HOST
+global.API_HOST = 'http://localhost:8080';
+
 // setup enzyme
 global.React = React;
 global.shallow = shallow;

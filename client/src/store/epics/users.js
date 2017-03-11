@@ -6,7 +6,7 @@ export const getUser = action$ => action$
   .ofType(ActionTypes.GET_USER)
   .map(signRequest)
   .switchMap(({payload, headers}) => Observable
-    .ajax.get(`http://localhost:8080/api/user/${payload.id}`, headers)
+    .ajax.get(`${API_HOST}/api/user/${payload.id}`, headers)
     .map(res => res.response)
     .map(user => ({
       type: ActionTypes.GET_USER_SUCCESS,
@@ -22,7 +22,7 @@ export const updateUser = action$ => action$
   .ofType(ActionTypes.UPDATE_USER)
   .map(signRequest)
   .switchMap(({payload, headers}) => Observable
-    .ajax.post(`http://localhost:8080/api/user/${payload.id}`, payload, headers)
+    .ajax.post(`${API_HOST}/api/user/${payload.id}`, payload, headers)
     .map(res => res.response)
     .map(user => ({
       type: ActionTypes.UPDATE_USER_SUCCESS,
