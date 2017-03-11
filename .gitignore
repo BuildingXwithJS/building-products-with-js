@@ -4,3 +4,4 @@ server/lib/
 npm-debug.log
 client/dist/
 coverage
+.vscode
