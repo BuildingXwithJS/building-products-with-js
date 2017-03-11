@@ -6,6 +6,7 @@ stages:
 - build
 - test
 - release
+- deploy
 
 variables:
   SERVER_TEST_IMAGE: yamalight/bpwjs-server:$CI_BUILD_REF_NAME
@@ -25,7 +26,7 @@ build-server:
 build-client:
   stage: build
   script:
-    - docker build --pull -t $CLIENT_TEST_IMAGE ./server
+    - docker build --pull -t $CLIENT_TEST_IMAGE ./client
     - docker push $CLIENT_TEST_IMAGE
 
 test-server:
@@ -58,3 +59,24 @@ release-client:
     - docker push $CLIENT_RELEASE_IMAGE
   only:
     - master
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  when: manual
+  before_script:
+    # Install ssh-agent, ldap if not already installed
+    - apk add --update openssh
+    # Run ssh-agent (inside the build environment)
+    - eval $(ssh-agent -s)
+    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - echo "$SSH_PRIVATE_KEY" > ~/id_rsa && chmod 600 ~/id_rsa && ssh-add ~/id_rsa
+    # For Docker builds disable host key checking. Be aware that by adding that
+    # you are suspectible to man-in-the-middle attacks.
+    # WARNING: Use this only with the Docker executor, if you use it with shell
+    # you will overwrite your user's SSH config.
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh root@codezen.net "cd /root/bpwjs.deploy; make deploy"
