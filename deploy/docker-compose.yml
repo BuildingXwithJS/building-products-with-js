@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    image: rethinkdb
+    volumes:
+      - ./db:/data
+
+  api:
+    build: ../server
+    environment:
+      - EXPERTS_DB_URL=db
+    ports:
+      - 8080:8080
+
+  ui:
+    build: ../client
+    environment:
+      - API_HOST=http://localhost:8080
+    ports:
+      - 80:3000

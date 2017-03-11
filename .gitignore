@@ -5,3 +5,4 @@ npm-debug.log
 client/dist/
 coverage
 .vscode
+deploy/db
