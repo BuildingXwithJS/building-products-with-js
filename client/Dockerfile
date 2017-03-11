@@ -12,4 +12,6 @@ RUN yarn
 # Copy application files
 COPY . /app
 
+EXPOSE 3000
+
 CMD ["npm", "start"]

@@ -15,4 +15,6 @@ COPY . /app
 # Precompile javascript
 RUN ./node_modules/.bin/babel src --out-dir lib
 
+EXPOSE 8080
+
 CMD ["node", "lib/index.js"]
