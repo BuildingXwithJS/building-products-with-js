@@ -2,6 +2,8 @@
 
 > Free open-source course
 
+[![Build Status](https://gitlab.com/yamalight/building-products-with-js/badges/master/build.svg)](https://gitlab.com/yamalight/building-products-with-js/pipelines)
+
 This repository contains code and related materials for [Building products with javascript](https://www.youtube.com/playlist?list=PL_gX69xPLi-ljVdNhspjZUlPmBNjRgD2X) course.
 
 ## CI/CD
