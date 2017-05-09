@@ -18,6 +18,10 @@ CI and CD for all the subprojects is done using [Gitlab-CI](https://gitlab.com/y
 - [Facebook page](https://www.facebook.com/buildingproductswithjs/) with updates on progress
 - [My twitter](https://twitter.com/yamalight) with updates on progress (and other stuff)
 
+## Course 2: Building Electron.js apps
+
+My secound course on building Electron.js apps can be found [here](https://github.com/yamalight/bpjs-electron) and [here](https://www.youtube.com/playlist?list=PL_gX69xPLi-lBH8I52J-3nEhEQD6_nDs6).
+
 ## License
 
 [MIT](https://opensource.org/licenses/mit-license)
