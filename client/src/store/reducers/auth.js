@@ -27,6 +27,15 @@ export const auth = (state = initialState, action) => {
       return {
         ...action.payload,
       };
+    case ActionTypes.UPDATE_USER_SUCCESS:
+      localStorage.setItem('user.data', JSON.stringify(action.payload.user));
+      return {
+        user: {
+          ...user,
+          login: action.payload.user.login,
+        },
+        token: state.token,
+      };
     case ActionTypes.LOGIN_ERROR:
     case ActionTypes.REGISTER_ERROR:
       // TODO: probably necessary in the future
