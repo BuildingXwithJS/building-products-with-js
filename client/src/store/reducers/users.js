@@ -12,6 +12,11 @@ export const users = (state = initialState, action) => {
         status: 'loading...',
       };
     case ActionTypes.UPDATE_USER_SUCCESS:
+      localStorage.setItem('user.data', JSON.stringify(action.payload.user));
+      return {
+        user: action.payload.user,
+        status: 'done',
+      };
     case ActionTypes.GET_USER_SUCCESS:
       return {
         user: action.payload.user,
