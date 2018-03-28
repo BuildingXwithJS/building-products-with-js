@@ -17,8 +17,13 @@ export const questions = (state = initialState, action) => {
       };
     // answer questions logic
     case ActionTypes.ANSWER_QUESTION_SUCCESS: {
-      const newQuestions = state.questions.map(q => q.id === action.payload.id ? action.payload : q);
-      return Object.assign({}, state, {questions: newQuestions});
+      const newQuestions = state.questions.map((q) => {
+        if (q.id === action.payload.id) {
+          return {...action.payload, owner: q.owner};
+        }
+        return q;
+      });
+      return {...state, questions: newQuestions};
     }
     case ActionTypes.CREATE_QUESTION_SUCCESS: {
       const newQuestions = [...state.questions, action.payload];
