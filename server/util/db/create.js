@@ -19,7 +19,7 @@ let dbImage = false;
 // runs when command writes to stdout
 start.stdout.on('data', (data) => {
   if (data) {
-    console.log('Sucessfully created expertsdb\n');
+    console.log('Successfully created expertsdb\n');
   }
 });
 
