@@ -6,7 +6,7 @@ import moment from 'moment';
 import app from '../src/app';
 
 export default (test) => {
-  const sharedInput = {text: 'Do you like my aweful coding?', expirationDate: moment().add(1, 'days').toDate()};
+  const sharedInput = {text: 'Do you like my awful coding?', expirationDate: moment().add(1, 'days').toDate()};
   const sharedInputOther = {text: 'Do you like things?', expirationDate: moment().add(2, 'days').toDate()};
   const updatedInput = {text: 'Update text question?', expirationDate: moment().add(3, 'days').toDate()};
 
