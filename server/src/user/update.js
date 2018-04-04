@@ -62,7 +62,7 @@ export default (app) => {
     // try to save
     await user.save();
 
-    // send succcess
+    // send success
     delete user.password;
     res.send(user);
   }));
