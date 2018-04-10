@@ -27,7 +27,7 @@ config.plugins = [
 if (!isProduction) {
   // hot reload plugin
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  // setup no erros plugin
+  // setup no errors plugin
   config.plugins.push(new webpack.NoEmitOnErrorsPlugin());
 }
 
